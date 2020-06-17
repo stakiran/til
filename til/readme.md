@@ -44,6 +44,7 @@ Use `b.bat` to build this readme TOC page.
 - [acroread Adobe Acrobat Reader DC](acroread.md) (7L)
 - [amazon Amazon](amazon.md) (44L)
 - [bitly bit.ly url 短縮サービス](bitly.md) (4L)
+- [conemu ConEmu](conemu.md) (64L)
 - [cpu CPU](cpu.md) (14L)
 - [cron Cron crontab](cron.md) (163L)
 - [css CSS](css.md) (76L)
@@ -115,7 +116,7 @@ Use `b.bat` to build this readme TOC page.
 - [ansible/ansible Ansible](ansible/ansible.md) (578L)
 - [ansible/ansible_tasks Ansible Tasks レシピ集](ansible/ansible_tasks.md) (100L)
 - [ansible/ansible_vault ansible vault](ansible/ansible_vault.md) (64L)
-- [autohotkey/autohotkey_ahk AutoHotkey](autohotkey/autohotkey_ahk.md) (197L)
+- [autohotkey/autohotkey_ahk AutoHotkey](autohotkey/autohotkey_ahk.md) (204L)
 - [aws/boto3_rest_api AWS REST API with boto3](aws/boto3_rest_api.md) (328L)
 - [aws/cloudformation_cfn CloudFormation](aws/cloudformation_cfn.md) (199L)
 - [aws/cloudwatch_event_crontab CloudWatch Event の crontab 書式](aws/cloudwatch_event_crontab.md) (14L)
@@ -132,7 +133,6 @@ Use `b.bat` to build this readme TOC page.
 - [aws/parameter Parameter パラメータ 疑似パラメーター](aws/parameter.md) (7L)
 - [aws/region_list_tokyo AWS リージョンリスト](aws/region_list_tokyo.md) (24L)
 - [aws/start_instances start intances](aws/start_instances.md) (10L)
-- [conemu/conemu ConEmu](conemu/conemu.md) (64L)
 - [firefox/firefox Firefox](firefox/firefox.md) (18L)
 - [firefox/format_link format link](firefox/format_link.md) (10L)
 - [firefox/ublock_origin uBlock Origin](firefox/ublock_origin.md) (14L)
@@ -207,5 +207,3 @@ Use `b.bat` to build this readme TOC page.
 - [windows/window_hwnd_handle_classname_etc ウィンドウハンドルとかウィンドウクラス名とかそのへん](windows/window_hwnd_handle_classname_etc.md) (25L)
 - [windows/winsat.exe WinSAT.exe Windows エクスペリエンスインデックス](windows/winsat.exe.md) (32L)
 
-## License
-- コードのライセンスは [MIT](LICENSE)

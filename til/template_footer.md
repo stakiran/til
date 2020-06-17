@@ -1,2 +1,0 @@
-## License
-- コードのライセンスは [MIT](LICENSE)
