@@ -10,7 +10,7 @@ Today I Learned.
     - with filename search feature of IDE like [VSCode](https://github.com/microsoft/vscode).
     - with incremental file search tool like [fenrir](http://hp.vector.co.jp/authors/VA026310/).
 - Fulltext search
-    - with this page search box.
+    - with [this repository search](https://github.com/stakiran/til/search?q=datetime&type=Code).
     - with fulltext search feature of IDE like [VSCode](https://github.com/microsoft/vscode).
     - with grep on your console or editor.
 
