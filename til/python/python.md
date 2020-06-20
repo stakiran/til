@@ -1,5 +1,20 @@
 # Python
 
+## datetime dow 曜日計算
+
+```python
+def today_datetimestr():
+    todaydt = datetime.datetime.today()
+    datestr = todaydt.strftime('%Y/%m/%d')
+
+    wd =  todaydt.weekday()
+    dow_j = ['月',"火", "水", "木","金","土","日"][wd]
+    dow_e = ['Mon',"Tue","Wed","Thu","Fri","Sat","Sun"][wd]
+
+    return '# {}({})'.format(datestr, dow_e)
+
+```
+
 ## format に dict を指定する
 
 ### 2 こっちが簡単かも dict じゃないが
