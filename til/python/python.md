@@ -1,5 +1,18 @@
 # Python
 
+## datetime object を n 日ずらす
+timedelta つくって足してやる。days=-1 でもいける。
+
+```python
+def today_datetimestr_short_with_dow(days=0):
+    todaydt = datetime.datetime.today()
+    if days!=0:
+        delta = datetime.timedelta(days=days)
+        todaydt += delta
+    datestr = todaydt.strftime('%y%m%d')
+    ...
+```
+
 ## datetime dow 曜日計算
 
 ```python
