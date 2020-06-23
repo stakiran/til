@@ -1,8 +1,47 @@
 # Google Chrome
-- Firefox メインで、サブとして Chrome 使いたい
-    - Firefox は知的生産やプログラミング用で遊び要素入れたくない
-    - Chrome 側で遊び要素やる（ネットサーフィン etc
-- Chrome はログインしない閲覧専用用途
+
+## マウスジェスチャー
+- 老舗無料ツールは既にお亡くなりになられている
+- back/forward 使えればいいので小さいのにした
+    - [miniGestures - Chrome ウェブストア](https://chrome.google.com/webstore/detail/minigestures/apnjnepphihnjahpbfjiebcnpgmjnhfp?hl=ja)
+    - 設定画面から L と R を割り当てる
+
+## chrome データバックアップ
+- そもそも Google アカウント使ってクラウドに保存せい、が基本スタンス
+    - [How to Backup Google Chrome: A Guide for 2020](https://www.cloudwards.net/backup-google-chrome/)
+- ローカルでやるなら以下をまるごと
+    - `%localappdata%\Google\Chrome\User Data`
+    - もうちょっと踏み込んで、たぶん以下でいけるはず
+        - `User Data\Default` フォルダだけで良い
+        - Default のうち、Service Worker と Cache はキャッシュなので最悪なしでもok
+    - 試したばかりの現時点で 500MB、うち上記二つで 350 MB くらいしめてる
+
+## メモリ使用量
+- 前提
+    - 8GB win10
+    - Firefox からブクマと履歴を移した
+    - 下記の初期設定は一通りした
+- 起動しただけ
+    - 300MB
+- Slackにログイン
+    - +100MB
+- Teamsにログイン
+    - +210MB
+
+### Firefoxとの比較
+- Firefox だと 900 MB は超える
+- Firefox はメモリが滞留したまま増えていく
+- Chrome だと動的に GC してくれている印象がある
+
+だが環境次第なところありそう: [firefox メモリ - Twitter検索 / Twitter](https://twitter.com/search?q=firefox%20%E3%83%A1%E3%83%A2%E3%83%AA&src=typed_query)
+
+## Software reporter を無効にする
+`%localappdata%\google\Chrome\User Data\SwReporter`
+
+- 設定から切っても復活するらしいので強引に対処する必要がある
+- とりあえず `exezzz` みたいにファイル名無効にした
+
+[Google Chrome の Software Reporter Toolを無効化！ - Qiita](https://qiita.com/YuheiTani/items/162ce1d559d2618f31b4)
 
 ## ブックマークエクスポート
 ブクママネージャ > 右上アイコンから可能
@@ -26,6 +65,15 @@ html
 ```
 
 ## 初期設定
+前提:
+
+- Firefox メインで、サブとして Chrome 使いたい
+    - Firefox は知的生産やプログラミング用で遊び要素入れたくない
+    - Chrome 側で遊び要素やる（ネットサーフィン etc
+- Chrome はログインしない閲覧専用用途
+
+設定すること
+
 - ブックマークと設定のインポート
     - プロファイル正しいの選ぶ
     - **すべてのFirefoxウィンドウ閉じてください** 出る
