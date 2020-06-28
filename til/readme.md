@@ -53,6 +53,7 @@ Use `b.bat` to build this readme TOC page.
 - [draw.io draw.io](draw.io.md) (10L)
 - [edge Microsoft Edge](edge.md) (25L)
 - [eslint ESLint](eslint.md) (44L)
+- [factfulness ファクトフルネス](factfulness.md) (42L)
 - [giphy Giphy？](giphy.md) (4L)
 - [gitattributes gitattributes](gitattributes.md) (6L)
 - [golang Golang Go言語](golang.md) (1129L)
