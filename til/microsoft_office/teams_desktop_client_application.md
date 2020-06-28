@@ -2,7 +2,7 @@
 - 重たいし安定性も微妙なので、できるだけ使いたくない
 - 普段は Chrome からログインして web 版を使う、が一番軽い
 - 仕方なく使わざるを得ないケース
-    - Teams 会議時（PCで画面共有する等）するとき
+    - ~~Teams 会議時（PCで画面共有する等）するとき~~ chromeなら会議もok。firefoxだとダメ
 
 ## バイナリ
 `%userprofile%\AppData\Local\Microsoft\Teams\Update.exe --processStart "Teams.exe"`

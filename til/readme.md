@@ -141,7 +141,7 @@ Use `b.bat` to build this readme TOC page.
 - [aws/start_instances start intances](aws/start_instances.md) (10L)
 - [firefox/firefox Firefox](firefox/firefox.md) (24L)
 - [firefox/format_link format link](firefox/format_link.md) (10L)
-- [firefox/ublock_origin uBlock Origin](firefox/ublock_origin.md) (14L)
+- [firefox/ublock_origin uBlock Origin](firefox/ublock_origin.md) (18L)
 - [git/git Git](git/git.md) (125L)
 - [git/gitconfig git config](git/gitconfig.md) (65L)
 - [git/gitignore gitignore](git/gitignore.md) (65L)

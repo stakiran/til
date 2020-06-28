@@ -1,8 +1,12 @@
 # uBlock Origin
 
-## Myフィルター書き方
+## Myフィルター
 
 ```
+! twitter sidebar blocking with ja 2020/06/27 14:27:00
+twitter.com##[aria-label="タイムライン: トレンド"]
+twitter.com##[aria-label="おすすめユーザー"]
+
 !2020/02/11 20:36:32 5ch ダンスラプレイヤースレ対策
 ||5ch.net/*^|$document
 
