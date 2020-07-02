@@ -23,6 +23,19 @@ command + P                       file search
 
 あとは keyboard settings で調べればいいか。
 
+## cmd コマンドプロンプトで改行文字を扱う
+[コマンドプロンプトやバッチファイルで、環境変数に改行文字(LF)を入れて使う。: Windows Script Programming](http://scripting.cocolog-nifty.com/blog/2008/11/lf-7446.html)
+
+環境変数に定義 + 遅延展開という荒業ならいけるらしい。
+
+## コマンド出力の行末空行 newline をカットする
+
+```
+| cut -d$'\n' -f1
+```
+
+cmd では `\n` が改行文字にならないので不可能。
+
 ## mac で gif 撮影
 [.mov を gif に変換【Mac】 - Qiita https://qiita.com/ntkgcj/items/6ac08a007f24a2de0b36]
 
