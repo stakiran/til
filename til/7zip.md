@@ -1,5 +1,20 @@
 # 7-zip
 
+## 圧縮時に指定フォルダを除外する
+
+```
+%bin% a chrome_default.zip "%localappdata%\Google\Chrome\User Data\Default" -xr!*Worker* -xr!*Cache* -xr!*IndexedDB*
+```
+
+特に大きな以下を省いている。
+
+- Service Worker
+- Cache
+- Code Cache
+- IndexedDB
+
+**必ず両端をワイルドカードにする必要がある**。`-xr!*IndexedDB` や `-xr!IndexedDB` だと効果がなかった。
+
 ## CRC SHA サブメニューを消す
 7zip-FM > オプション > 7-zip > CRC SHA チェック外す
 
