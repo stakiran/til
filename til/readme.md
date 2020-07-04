@@ -40,7 +40,7 @@ Use `b.bat` to build this readme TOC page.
 
 ## List
 - [5w1h 5W1H](5w1h.md) (12L)
-- [7zip 7-zip](7zip.md) (21L)
+- [7zip 7-zip](7zip.md) (36L)
 - [acroread Adobe Acrobat Reader DC](acroread.md) (7L)
 - [aeronchair アーロンチェア](aeronchair.md) (62L)
 - [amazon Amazon](amazon.md) (44L)
@@ -57,8 +57,10 @@ Use `b.bat` to build this readme TOC page.
 - [factfulness ファクトフルネス](factfulness.md) (42L)
 - [giphy Giphy？](giphy.md) (4L)
 - [gitattributes gitattributes](gitattributes.md) (6L)
+- [gokan 五感](gokan.md) (6L)
 - [golang Golang Go言語](golang.md) (1129L)
 - [google_chrome Google Chrome](google_chrome.md) (100L)
+- [google_form_spec Googleフォーム](google_form_spec.md) (79L)
 - [grep grep](grep.md) (86L)
 - [hosts drivers etc hosts ](hosts.md) (22L)
 - [iphone iPhone](iphone.md) (48L)
@@ -190,7 +192,7 @@ Use `b.bat` to build this readme TOC page.
 - [microsoft_office/teams Microsoft Teams](microsoft_office/teams.md) (45L)
 - [microsoft_office/teams_chat_contact_list_address Teams チャット 連絡先登録 コンタクトリスト](microsoft_office/teams_chat_contact_list_address.md) (7L)
 - [microsoft_office/teams_desktop_client_application Teams デスクトップアプリ](microsoft_office/teams_desktop_client_application.md) (16L)
-- [microsoft_office/teams_incoming_Webhook Incoming Webhook](microsoft_office/teams_incoming_Webhook.md) (74L)
+- [microsoft_office/teams_incoming_webhook Incoming Webhook](microsoft_office/teams_incoming_webhook.md) (74L)
 - [microsoft_office/teams_notification Teams 通知関連](microsoft_office/teams_notification.md) (11L)
 - [microsoft_office/teams_team_management Teams のチーム管理](microsoft_office/teams_team_management.md) (7L)
 - [pandoc/pandoc Pandoc](pandoc/pandoc.md) (167L)
