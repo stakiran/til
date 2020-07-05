@@ -213,6 +213,7 @@ Use `b.bat` to build this readme TOC page.
 - [teraterm/teraterm_commandline Teraterm コマンドライン](teraterm/teraterm_commandline.md) (70L)
 - [teraterm/teraterm_macro_ttl Taraterm マクロ](teraterm/teraterm_macro_ttl.md) (41L)
 - [windows/assoc_and_ftype ファイル関連付け系コマンド](windows/assoc_and_ftype.md) (79L)
+- [windows/CAudioFilterAgent64.exe CAudioFilterAgent64.exe](windows/CAudioFilterAgent64.exe.md) (6L)
 - [windows/darkmode Windows でダークモードにする](windows/darkmode.md) (14L)
 - [windows/gamebar_movie_caputure Gamebar 動画 キャプチャ](windows/gamebar_movie_caputure.md) (38L)
 - [windows/hidden_contextmenu_item_clsid 右クリックメニューの項目非表示化](windows/hidden_contextmenu_item_clsid.md) (30L)
