@@ -23,6 +23,24 @@ command + P                       file search
 
 あとは keyboard settings で調べればいいか。
 
+## linux using port 調べる
+一覧
+
+```
+$ lsof -i -P
+COMMAND  PID     USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+python3 1807 ssm-user    3u  IPv4  24381      0t0  TCP *:8080 (LISTEN)
+```
+
+絞る
+
+```
+$ lsof -i:80
+$ lsof -i:8080
+COMMAND  PID     USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+python3 1807 ssm-user    3u  IPv4  24381      0t0  TCP *:http-alt (LISTEN)
+```
+
 ## cmd コマンドプロンプトで改行文字を扱う
 [コマンドプロンプトやバッチファイルで、環境変数に改行文字(LF)を入れて使う。: Windows Script Programming](http://scripting.cocolog-nifty.com/blog/2008/11/lf-7446.html)
 
