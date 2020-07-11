@@ -1,9 +1,7 @@
 # chmod permission パーミッションまわり
 
-## chmod 700 filename
-ファイル名が先ではない
-
-（これ過去 50 回くらいは間違えてる）
+## スクリに実行権限つけるとき
+chmod a+x setup.sh
 
 ## permision 読み方
 ここが詳しい
