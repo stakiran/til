@@ -2,6 +2,17 @@
 - メール: https://outlook.office.com/mail/inbox
 - 予定表: https://outlook.office.com/calendar/view/month
 
+## 2016 で「Teamsに再度サインインしないとダメ」的なエラーで会議開催できない
+Teams デスクトップアプリでサインインし直すと解決した。
+
+考察
+
+- たぶんアプリ側が保持してる cmdkey 使ってる
+- 私は Teams アプリが嫌いで、taskkill /f /im teams.exe もよく使っていた
+- また組織ポリシーでセッションは 1week で切れる
+- このあたりが絡んで、保持された認証情報がおかしくなった？
+- teams アプリでログインし直すことで、これをリセットできた
+
 ## ダークモード
 ファイル > officeアカウント > office テーマ
 

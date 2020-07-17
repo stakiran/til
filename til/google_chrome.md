@@ -1,5 +1,8 @@
 # Google Chrome
 
+## 下のダウンロードバーが表示されたままでうっとうしい
+[Always Clear Downloads 2 - Chrome ウェブストア](https://chrome.google.com/webstore/detail/always-clear-downloads-2/jcajchndfkmnaefkhoaoiagemplbfffn)
+
 ## マウスジェスチャー
 - 老舗無料ツールは既にお亡くなりになられている
 - back/forward 使えればいいので小さいのにした

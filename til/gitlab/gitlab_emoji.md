@@ -6,7 +6,7 @@
 - リアクション・感情表現系は取り上げない（都度調べればいい＆調べやすい）
 
 ## 最近使った
-:mask: :tired_face: :inbox_tray: :outbox_tray: :thinking_face: :raised_hand: :muscle: :microphone:
+:mask: :tired_face: :inbox_tray: :outbox_tray: :thinking_face: :raised_hand: :muscle: :microphone: :sunglasses:
 
 ## マイク
 :microphone:

@@ -1,5 +1,12 @@
 # Pandoc
 
+## Install 2.10 to win10 
+- https://pandoc.org/installing.html
+- Haskell なくてもいけるようになってる、37MB
+
+## バイナリ
+`%localappdata%\Pandoc\pandoc.exe`
+
 ## 任意変数を使うには template しかなさそう
 pandoc -D epub3 で epub3 のテンプレート内容を見る。body 部分に本文流し込まれるので、そこ以外をいじればいけるって感じ？
 
