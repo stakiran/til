@@ -1,5 +1,11 @@
 # Pandoc
 
+## Markdown に書いた URL を自動でリンクさせたい
+- 対応していません
+- `<>` で囲めば可能
+
+[Pandoc - Pandoc User’s Guide](https://pandoc.org/MANUAL.html#automatic-links)
+
 ## Install 2.10 to win10 
 - https://pandoc.org/installing.html
 - Haskell なくてもいけるようになってる、37MB
