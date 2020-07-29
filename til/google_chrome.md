@@ -1,5 +1,15 @@
 # Google Chrome
 
+## Tampermonkey
+あります
+
+- https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo/related?hl=ja
+
+以下設定はしておく
+
+- ダッシュボード > 設定タブ
+    - 匿名の統計 off
+
 ## 下のダウンロードバーが表示されたままでうっとうしい
 [Always Clear Downloads 2 - Chrome ウェブストア](https://chrome.google.com/webstore/detail/always-clear-downloads-2/jcajchndfkmnaefkhoaoiagemplbfffn)
 

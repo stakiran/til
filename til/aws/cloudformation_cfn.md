@@ -1,5 +1,68 @@
 # CloudFormation
 
+## マネジメントコンソールを見れる IAM ユーザーをつくるには？（ポリシーは？）
+`resouce=*` の Describe なポリシーをつくればよい。
+
+逆を言えば特定インスタンスのみ Describe する、なんてことはできない（DesribeInstances、つまり全部リストアップしか action が用意されてない）。
+
+## 指定インスタンスと SecurityGroup のみ触れる IAM ユーザー with パスワードログイン
+- 指定インスタンスの start/stop と、指定 SG の ingress の edit のみサポート
+- IAM ユーザーはパスワード持っててすぐにでもログイン可能
+    - パスワードは Cfn つくるときに指定
+    - つくった後、stack output から丸見え（noechoしてない）
+
+```yaml
+Parameters:
+  WhitelistEditorUserPassword:
+    Description: Password of an IAM user to edit whitelist.
+    MinLength: 16
+    Type: String
+    Default: !PleaseUseThePasswordGenerator!
+
+Resources:
+  IAMUserForWhitelistEditor:
+    Type: AWS::IAM::User
+    Properties:
+      LoginProfile:
+       Password: !Ref WhitelistEditorUserPassword
+       PasswordResetRequired: false
+      Policies:
+        - PolicyName: "whitelist-editor-instance"
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+            - Effect: "Allow"
+              Resource:
+                -  !Sub "arn:aws:ec2:${AWS::Region}:${AWS::AccountId}:instance/$(Instance}"
+              Action:
+                - "ec2:DescribeInstanceStatus"
+                - "ec2:DescribeInstanceAttribute"
+                - "ec2:StartInstances"
+                - "ec2:StopInstances"
+        - PolicyName: "whitelist-editor-sg"
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+            - Effect: "Allow"
+              Resource:
+                -  !Sub "arn:aws:ec2:${AWS::Region}:${AWS::AccountId}:security-group/${SG}"
+              Action:
+                - "ec2:RevokeSecurityGroupIngress"
+                - "ec2:AuthorizeSecurityGroupIngress"
+        - PolicyName: "whitelist-editor-describes"
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+            - Effect: "Allow"
+              Resource:
+                - "*"
+              Action:
+                - "ec2:DescribeInstances"
+                - "ec2:DescribeSecurityGroups"
+      UserName: "whitelist-editor-for-xxx-env"
+```
+
+
 ## metadata パラメーター並び順変更 version バージョン番号入れる
 
 ```
