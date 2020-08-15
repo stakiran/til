@@ -52,7 +52,10 @@
 `%localappdata%\google\Chrome\User Data\SwReporter`
 
 - 設定から切っても復活するらしいので強引に対処する必要がある
-- とりあえず `exezzz` みたいにファイル名無効にした
+- 1 とりあえず `exezzz` みたいにファイル名無効にした
+    - ダメ。フォルダごと複製されてしまう
+- 2 notepad.exe を software_reporter_tool.exe にリネームして上書きしてみた
+    - 内部的に単に software_reporter_tool.exe 叩くだけなら、メモ帳立ち上がって終わりになる（実質無効化できる）はずだが
 
 [Google Chrome の Software Reporter Toolを無効化！ - Qiita](https://qiita.com/YuheiTani/items/162ce1d559d2618f31b4)
 
