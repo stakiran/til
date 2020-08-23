@@ -121,10 +121,12 @@ def unixtime_micro_str2dt(unixtime_micro_str):
     return dt
 ```
 
-## 四捨五入
+## 四捨五入 round
 round(11.333, 1)
 
 11.3 になる。第二位を四捨五入。
+
+round(floatv) で floatvの小数点第一位を四捨五入。結果はintになる。
 
 ## list で n 個の要素からなるリストを新規作成
 
