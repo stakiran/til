@@ -2,7 +2,7 @@
 
 ## クォータ
 
-## 全般
+### 全般
 - どこから見るか？
     - ec2 > 制限
     - 現在の上限数を確認
@@ -11,6 +11,21 @@
     - https://console.aws.amazon.com/servicequotas/
     - たとえば iam ユーザー数の上限は、ec2 ダッシュボード > 制限からは見れない（ec2じゃなくてiamのカテゴリ）のでここから
     - 申請緩和はしたことないからわからない（＆一部できない項目もあるみたいだが）
+
+### vCPU 数制限
+試算:
+
+- ec2 > 制限 > vCPU数を計算
+- 例: https://ap-northeast-1.console.aws.amazon.com/ec2/v2/home?region=ap-northeast-1#LimitsCalculator:
+- インスタンスタイプx個数を入力して、vcpu数を計算できる。
+
+閲覧:
+
+- クォータから
+
+vCPU 目安
+
+- t2だと medium, large が 2 個、micro とかは 1 個
 
 ## 当方実績
 

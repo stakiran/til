@@ -3,6 +3,23 @@
 - https://xlrd.readthedocs.io/en/latest/api.html#xlrd.sheet.Sheet.get_rows
 - https://xlrd.readthedocs.io/en/latest/api.html#xlrd.sheet.Cell
 
+## get_rows() の値をスライスすると 'generator' object is not subscriptable
+いったんリストに変更する
+
+```
+rows = sheet.get_rows()
+rows_by_list = list(rows) # rows は generator で slice できないので、いったん list にする
+row_itemnames = rows_by_list[4]
+```
+
+## xlrd.biffh.XLRDError: Can't find workbook in OLE2 compound document
+- Excel ファイルにパスワードがかかっている
+- IRM 化されている
+
+前者の場合、パスワードを投入する処理も書けるみたいだからググること。
+
+後者はぐぐっても解得られなかった。Excel 側で IRM 解除するしかない。ちなみに「プログラムを使用してブックにアクセスする」は Excel 内マクロからアクセスできるようにするって話なので関係ない。
+
 ## 単位
 - book
 - sheet

@@ -1,5 +1,36 @@
 # Python
 
+## 日本語変数名も使用可能
+
+### 活用例: Excel 製のアンケート項目から計算プログラムをつくる
+Excel からコピペした項目名をそのまま変数として使う感じ
+
+筆者事例1
+
+- `私は～～のためなら～～するべきだと考えている` ← こういう項目が100以上ある
+- 全部変数名（メンバ変数名）に落とす必要がある
+- 英語名考えて打つのしんどくない？
+- コピペした日本語項目名をそのまま変数にする感じでプログラミングしちゃろ ← こっちの方が楽だった
+
+## float 浮動小数点 計算 精度が Excel と合わない
+- decimal ライブラリを使う
+- float は内部的に 2 進数なので精度ガバガバ
+
+```
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from decimal import *
+>>> print(Decimal(1)/Decimal(3))
+0.3333333333333333333333333333
+```
+
+数全部 Decimal で囲ってあげれば良い感じ。
+
+### xlrd との兼ね合い
+- 文字列にするときは str ではなく repl にする
+- 文字列にしたい場合に、Decimal を使う必要はない
+
+参考: [精度を失うことなくPython FloatをStringに変換する](http://www.366service.com/jp/qa/6a6dd6759e1fcc8d55abd8b7aced14da)
+
 ## datetime object を n 日ずらす
 timedelta つくって足してやる。days=-1 でもいける。
 
