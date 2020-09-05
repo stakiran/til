@@ -1,5 +1,43 @@
 # Python
 
+## getattr リフレクション グローバルに定義した関数名を使いたい場合は？
+globals() とか locals() でリーチできる。
+
+```
+def globalfunc1(var):
+  print(var)
+
+def refrection_test():
+  funcname = 'globalfunc1'
+  f = globals()[funcname]
+  f('yeah!')
+
+```
+
+## 式を複数行に分けて書く
+
+```
+a = 1.0 \
++ 2.1 \
++ 3.3
+print(a)
+```
+
+行末に `\` つけて続きあることを示す。
+
+## sha256 ハッシュ
+
+```python
+def hash(s):
+    import hashlib
+
+    unicode_string = s
+    byte_string = s.encode('utf-8')
+
+    hashed_str = hashlib.sha256(byte_string).hexdigest()
+    return hashed_str
+```
+
 ## 日本語変数名も使用可能
 
 ### 活用例: Excel 製のアンケート項目から計算プログラムをつくる

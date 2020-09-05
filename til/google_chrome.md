@@ -27,6 +27,7 @@
     - もうちょっと踏み込んで、たぶん以下でいけるはず
         - `User Data\Default` フォルダだけで良い
         - Default のうち、Service Worker と Cache はキャッシュなので最悪なしでもok
+        - Extensions もファイル数でかい（jsフルセットの過去バージョン全部保持で 19000 ファイルとか）ことがあるのでなしでok
     - 試したばかりの現時点で 500MB、うち上記二つで 350 MB くらいしめてる
 
 ## メモリ使用量
@@ -50,6 +51,8 @@
 
 ## Software reporter を無効にする
 `%localappdata%\google\Chrome\User Data\SwReporter`
+
+無効化できん……
 
 - 設定から切っても復活するらしいので強引に対処する必要がある
 - 1 とりあえず `exezzz` みたいにファイル名無効にした

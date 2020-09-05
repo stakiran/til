@@ -1,5 +1,17 @@
 # CloudFormation
 
+## resource sg-XXXXXXXXXXXXXXXXX has a dependent object (Service: AmazonEC2; Status Code: 400; Error Code: DependencyViolation; が出て削除できない
+- 誰かが勝手に依存関係を追加している
+- 今回の例
+    - cfn でつくった sg-1
+    - 利用者Aさん
+    - Aさんが独自でインスタンスXつくって、勝手に sg-1 に紐付けてた
+        - このインスタンスXが残ってるせいで、sg-1 を消すことができない
+- どう対処した？
+    - マネコンから sg-1 を使ってるインスタンス探す
+    - 見つけた
+    - 本人に「もう使ってないなら消すけどいい？」確認 → ok
+
 ## マネジメントコンソールを見れる IAM ユーザーをつくるには？（ポリシーは？）
 `resouce=*` の Describe なポリシーをつくればよい。
 

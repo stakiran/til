@@ -1,5 +1,26 @@
 # Python snippet template よく使うやつ
 
+## 小さいやつ
+
+```
+# encoding: utf-8
+
+import os
+import sys
+
+def file2list(filepath):
+    ret = []
+    with open(filepath, encoding='utf8', mode='r') as f:
+        ret = [line.rstrip('\n') for line in f.readlines()]
+    return ret
+
+def list2file(filepath, ls):
+    with open(filepath, encoding='utf8', mode='w') as f:
+        f.writelines(['{:}\n'.format(line) for line in ls] )
+
+MYFULLPATH = os.path.abspath(sys.argv[0])
+MYDIR = os.path.dirname(MYFULLPATH)
+```
 ## test と main を搭載
 
 ```
@@ -68,24 +89,3 @@ if __name__ == "__main__":
     outfilepath = args.output
 ```
 
-## 小さいやつ
-
-```
-# encoding: utf-8
-
-import os
-import sys
-
-def file2list(filepath):
-    ret = []
-    with open(filepath, encoding='utf8', mode='r') as f:
-        ret = [line.rstrip('\n') for line in f.readlines()]
-    return ret
-
-def list2file(filepath, ls):
-    with open(filepath, encoding='utf8', mode='w') as f:
-        f.writelines(['{:}\n'.format(line) for line in ls] )
-
-MYFULLPATH = os.path.abspath(sys.argv[0])
-MYDIR = os.path.dirname(MYFULLPATH)
-```
