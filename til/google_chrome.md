@@ -1,5 +1,26 @@
 # Google Chrome
 
+## 一部ウェブサイトで認証が通らなくなった
+概要
+
+- Chrome の SameSite Cookie 仕様変更によるものと考えられる
+- この変更によりセキュリティが向上し、SameSite に？対応していないウェブサイトは Chrome で動作しなくなった
+- 動作させたいなら、disable にする
+
+手順
+
+- `chrome://flags/`
+- SameSite で検索
+- Cookies without SameSIte must be secure を Disable  に変更して relaunch
+
+運用アイデア
+
+- ~~サードパーティの Cookie をブロックする~~ 少なくともTeamsが動作しないので没
+
+参考:
+
+- [【一問一答】 Chrome の SameSite Cookie の変更とは？ ： Cookie への新たなアプローチ | DIGIDAY［日本版］](https://digiday.jp/platforms/what-is-chrome-samesite/)
+
 ## Tampermonkey
 あります
 
@@ -60,6 +81,7 @@
 - 2 notepad.exe を software_reporter_tool.exe にリネームして上書きしてみた
     - 内部的に単に software_reporter_tool.exe 叩くだけなら、メモ帳立ち上がって終わりになる（実質無効化できる）はずだが
     - 2020/08/26 18:20:33 ダメだった。復活しやがる
+- 消し方わからないので **起動時にプロセスチェックして出現してたら殺す** ことにした
 
 [Google Chrome の Software Reporter Toolを無効化！ - Qiita](https://qiita.com/YuheiTani/items/162ce1d559d2618f31b4)
 
