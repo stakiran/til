@@ -1,5 +1,15 @@
 # Python
 
+## json alias, loads dumps kwargs
+
+```
+def jsonstr2dict(s):
+    return json.loads(s)
+
+def dict2str(d, **kwargs):
+    return json.dumps(d, **kwargs)
+```
+
 ## getattr リフレクション グローバルに定義した関数名を使いたい場合は？
 globals() とか locals() でリーチできる。
 
