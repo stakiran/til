@@ -19,6 +19,18 @@ for(const cardName of listByArray) {
 }
 ```
 
+## アロー関数
+- `function(args){...}` を `(args) => {...}` と書ける
+- 省略
+    - 処理が一行の場合、`(args) => procedure` を略してもいい
+    - 引数が一つの場合、`args => {}` とカッコなしでもいい
+    - 引数がない場合、`() => {...}` と空かっこだけ書く
+- this
+    - `var self=this;` が自動で補われる感じ
+    - 他のプログラミング言語みたくレキシカルな挙動で使えるよ？
+
+[JavaScript アロー関数を説明するよ - Qiita](https://qiita.com/may88seiji/items/4a49c7c78b55d75d693b)
+
 ## var let const
 定数は const で良い。
 
