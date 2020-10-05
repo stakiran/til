@@ -1,5 +1,17 @@
 # Vue.js
 
+## v-cloak
+- マスタッシュ `{{ likethis }}` が一瞬表示されるのを防ぐ
+- これを付けた要素は Vue インスタンスが生成完了するまで残る
+    - ≒v-cloak クラスがついたままになっている
+- css の display:none と組み合わせる
+
+つまり「v-cloak クラスがついている間に display:none する」という処理を書けばいい。
+
+cloak？ → マントの意。
+
+[【vue.js】v-cloakを使ってアクセス時のテンプレートタグを表示させない | アールエフェクト](https://reffect.co.jp/vue/vue-js-v-cloak-directive)
+
 ## v-model
 つまり以下を全部やってくれるエイリアス
 
@@ -53,6 +65,11 @@
 > 要はキーを指定すれば、リストの要素の順番が入れ替わったりしたときに、変更前と変更後でキーが同じ要素は同じものだとみなされて、適宜DOM要素の移動が起こります。
 
 [html - v-bind:key を使う時と使わない時の違い - スタック・オーバーフロー](https://ja.stackoverflow.com/questions/42250/v-bindkey-%E3%82%92%E4%BD%BF%E3%81%86%E6%99%82%E3%81%A8%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84%E6%99%82%E3%81%AE%E9%81%95%E3%81%84)
+
+### :key="xxx" って何？（先頭のコロン）
+v-bind の略。
+
+[vue.js - What does the colon represent inside a VueJS/Vuetify/HTML component tag - Stack Overflow](https://stackoverflow.com/questions/51541835/what-does-the-colon-represent-inside-a-vuejs-vuetify-html-component-tag)
 
 ## v-on
 - `v-on:click="expression"`

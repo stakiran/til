@@ -1,5 +1,10 @@
 # Visual Studio Code(VSCode)
 
+```
+ctrl + shift + >     パンくずリストを開く
+ctrl + shift + \     対応する括弧に移動
+```
+
 ## マルチカーソル cursor クリックで増やす
 Alt + クリック
 
