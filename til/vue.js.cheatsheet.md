@@ -1,4 +1,11 @@
-# Vue.js
+# Vue.js チートシート
+覚えづらいものをサッと確認する系。
+
+## :sob: 困った時
+- vuex で store にアクセスできないんですが
+    - `this.$store` にしている？（thisはある？）
+- vue router でコンポーネントが何も表示されないんですが
+    - App.vue router-link to, router.js の routes, xxx.vue の name あたりの対応が取れているか確認
 
 ## v-cloak
 - マスタッシュ `{{ likethis }}` が一瞬表示されるのを防ぐ
@@ -6,7 +13,7 @@
     - ≒v-cloak クラスがついたままになっている
 - css の display:none と組み合わせる
 
-つまり「v-cloak クラスがついている間に display:none する」という処理を書けばいい。
+つまり「v-cloak クラスがついている間は display:none する」という処理を書けばいい。
 
 cloak？ → マントの意。
 
@@ -43,6 +50,7 @@ cloak？ → マントの意。
     - key にクラス名
     - value に真偽値
     - 真偽値が true なら、key と同名のクラスをつける
+    - 例: `v-bind:class="{ 'is-dead': is_dead }"` is_dead が true なら、is-dead クラスをつける
 - `v-bind:class="[ ... ]"`
     - 要素にクラス名（を入れた文字列変数）
 
@@ -156,3 +164,13 @@ v-for
     - 上記以外汎用
     - `{{ }}` で呼ぶたびに実行走る
     - 節約したいなら computed も
+
+## mustache `{{ xxx }}` これのこと
+
+### `{{ xxx | filter1 }}` これはフィルター
+- [フィルター — Vue.js](https://jp.vuejs.org/v2/guide/filters.html)
+- ローカルフィルタ
+    - コンポーネント内 filters に定義する
+- グローバルフィルタ
+    - Vue.fiter() で定義する
+- ローカルの方が優先される

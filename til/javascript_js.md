@@ -19,12 +19,188 @@ for(const cardName of listByArray) {
 }
 ```
 
+## `increment({ commit }){ commit('increment')}` ← 引数の `{}` 囲みはなんですか
+ES2015 の引数分割束縛
+
+- 以下を二つとも満たす
+    - 1 関数 f の定義時に引数 param を `{param}` と書く
+    - 2 呼び出し元では、f に「param を持つオブジェクト obj1」を与える
+- すると、f の内部では param の部分が obj1.param と補われる
+
+つまり obj1.param obj1.param obj1.param と何度も書くところが、param だけで済む。
+
+読み方としては、`f({param})` は、**fの第一引数に渡されたxxxのうち、param プロパティについては、関数内で xxx. を省略できまっせ** ← こんなイメージ。
+
+```
+// caller
+
+increment(context)
+
+===
+
+// callee
+increment ({ commit }) {
+  commit('increment')
+}
+```
+
+- [ES2015 の引数分割束縛（argument destructuring）とは？ | 世界を変える男-やまだたろう-](https://sekaiokaeru.com/tips/javascript-argument-destructuring)
+    - この記事がわかりやすかった
+- [波括弧で引数をくくる「引数分割束縛」について - Qiita](https://qiita.com/nayucolony/items/0b9b0d6c8d968481c6fb)
+
+
+## `obj = {[prop]: 'hey'}` この `[]` 囲みはなんですか
+動的プロパティ。
+
+`[xxx]` と書くと、xxx に入ってる値をプロパティ名として使える。
+
+- [オブジェクト初期化子 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Object_initializer)
+    - ES2015より
+- [ミューテーション | Vuex](https://vuex.vuejs.org/ja/guide/mutations.html)
+    - mutation type を定数で並べるという手法もあるらしい
+
+## `x => y => z` みたいにアローが連続しているのは何？
+[JavaScript - ES6の文法でわからないところが｜teratail](https://teratail.com/questions/71006)
+
+カリー化。
+
+```
+const f = x => y => z => x + y + z;
+console.log(f(1)(2)(3));
+
+  ↓ このように展開される
+
+const f = (x) => {
+  return (y) => {
+    return (z) => {
+      return x + y + z;
+    };
+  };
+};
+
+  ↓ ES5 では
+
+var f = function f(x) {
+  return function (y) {
+    return function (z) {
+      return x + y + z;
+    };
+  };
+};
+```
+
+……わからん。暗記しても良いが、原理理解したい。C言語のポインタのポインタのポインタ的なのを思い出す……
+
+### 一般化する
+
+```
+const f = x => y => z => x + y + z;
+          ^^^^^^    ^
+          1         2
+
+1 アローの右側にある引数
+2 最後のアローの右側にある引数
+
+2 の本体にて、1 と 2 すべて使った処理を書く。
+```
+
+### 原理を自力で理解する
+
+```
+const f = x => y => z => x + y + z;
+
+  ↓
+
+const f = x => YYY; // YYY は y => z => x + y + z;
+
+  ↓
+
+var f = function f(x){
+  YYY
+}
+
+  ↓
+
+var f = function f(x){
+  function(y){
+    ZZZ             // ZZZ は z => x + y + z;
+  }
+}
+
+  ↓
+
+var f = function f(x){
+  function(y){
+    function(z){
+      x + y+ z
+    }
+  }
+}
+
+  ↓ 本体が一行の場合、return が補われるの今知ったので、こうですね
+
+var f = function f(x){
+  return function(y){
+    return function(z){
+      return x + y + z
+    }
+  }
+}
+
+===== あとは、カリー化を復習するのみ =====
+
+var a = f(1) すると？
+
+    a = return function(y){
+      return function(z){
+        return 1 + y + z
+      }
+    }
+
+    ↑こうなる
+
+   つまり第一引数を 1 で固定した感じ
+
+同様に var b = a(2) は？
+あるいは var b = f(1)(2) でもいいけど
+
+    b = return function(z){
+      return 1 + 2 + z
+    }
+
+    ↑こうなる
+```
+
+## `...` とはスプレッド演算子
+[スプレッド構文 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
+
+```
+function sum(x, y, z) {
+  return x + y + z;
+}
+const numbers = [1, 2, 3];
+console.log(sum(numbers));    // "1,2,3undefinedundefined"
+console.log(sum(...numbers)); // 6
+```
+
+- Python でいう `*args` や `**kwargs` みたいなもの
+- js のスプレッド演算子ではリストもオブジェクトも同じ `...` でいける
+
 ## アロー関数
 - `function(args){...}` を `(args) => {...}` と書ける
 - 省略
     - 処理が一行の場合、`(args) => procedure` を略してもいい
-    - 引数が一つの場合、`args => {}` とカッコなしでもいい
+    - 引数が一つの場合、`arg => {}` とカッコなしでもいい
+    - 引数も処理も一つの場合、`arg => procedure` だけで済むことになる
     - 引数がない場合、`() => {...}` と空かっこだけ書く
+- return の省略
+    - 処理が一行の場合、return が自動で補われる
+    - 例1:
+        - ES6: `(args) => {expression}`
+        - ES5: `function(args){return expression}`
+    - 例2: 全部省略場合
+        - ES6: `arg => expression`
+        - ES5: `function(arg){return expression}`
 - this
     - `var self=this;` が自動で補われる感じ
     - 他のプログラミング言語みたくレキシカルな挙動で使えるよ？

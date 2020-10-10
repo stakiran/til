@@ -1,4 +1,50 @@
-# Windows Defender AV
+# Windows Defender AV / リアルタイム保護
+
+## 弾いてるはずなのに MsMpEng.exe が CPU 回してくる件
+事象:
+
+- D:\bin を弾いてるのに、D:\bin\fenrir\fenrir.exe を AHK からホットキーで起動するたびに MsMpEng.exe が動いている
+
+設定:
+
+- `Set-MpPreference -ExclusionPath` で D:\bin を指定してる
+- `ExclusionProcess` は指定してない
+
+考えられること:
+
+- 本件では「AHKから fenrir を起動している」
+- ExclusionProcess で AHK を除外するべきではないか？
+
+## リアルタイム保護自動オンをしているスケジュールを消す
+
+```
+schtasks /delete /tn "\Microsoft\Windows\Windows Defender\Windows Defender Update" /f
+schtasks /delete /tn "\Microsoft\Windows\Windows Defender\Windows Defender Scheduled Scan" /f
+schtasks /delete /tn "\Microsoft\Windows\Windows Defender\Windows Defender Cache Maintenance" /f
+schtasks /delete /tn "\Microsoft\Windows\Windows Defender\Windows Defender Cleanup" /f
+schtasks /delete /tn "\Microsoft\Windows\Windows Defender\Windows Defender Verification" /f
+exit /b
+```
+
+すぐ実行できるようにしておくと便利。それさえ手間ならタスクスケジューラから定期的に呼び出せるようにしておく。
+
+## リアルタイム保護を一時的に無効にする
+設定から。
+
+このウィンドウは常に開いておき、たまにチェックすると良い（面倒だが）
+
+## Set-MpPreference でワイルドカードを使うとどうなる？
+[Configure and validate exclusions based on extension, name, or location - Windows security | Microsoft Docs](https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/configure-extension-file-exclusions-microsoft-defender-antivirus#use-wildcards-in-the-file-name-and-folder-path-or-extension-exclusion-lists)
+
+- 任意のフォルダを表現できる
+- `c:\hoge\*\*fuga` みたいな多層も可能
+
+## Set-MpPreference のフォルダ除外はサブフォルダの有効？
+yes
+
+[拡張子、名前、場所に基づく除外の構成と検証 - Windows security | Microsoft Docs](https://docs.microsoft.com/ja-jp/windows/security/threat-protection/microsoft-defender-antivirus/configure-extension-file-exclusions-microsoft-defender-antivirus#use-wildcards-in-the-file-name-and-folder-path-or-extension-exclusion-lists)
+
+> フォルダーの除外は、そのフォルダーの下にあるすべてのファイルとフォルダーに適用されます (サブフォルダーが再解析ポイントの場合を除く)。 再解析ポイントのサブフォルダーは個別に除外する必要があります。
 
 ## ExclusionProcess と ExclusionPath の違い
 - Process は「指定プロセス **が開くファイル** を除外する」
