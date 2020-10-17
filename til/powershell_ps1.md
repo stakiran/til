@@ -1,5 +1,30 @@
 # Powershell
 
+## プロパティ名の全取得と値の全取得
+Azure AD から取得する文脈だが、
+
+- 1: `Get-Member` でプロパティ名をゲット
+- 2: foreach で obj1.xxxx の xxxx 部分を、1 で回す
+
+```powershell
+import-module AzureAD
+
+connect-AzureAD
+$user = Get-AzureADUser -SearchString "my_email_address@example.com"
+$methods = $user | Get-Member -MemberType Properties 
+$methods | foreach { write-host $_.Name = $user.($_.Name) }
+disconnect-AzureAD
+```
+
+## Azure AD からのデータ読み出し
+- ただし connect 時に毎回ログイン画面が出る
+
+```
+$ install-module AzureAD -Scope CurrentUser
+```
+
+スクリは一つ上を見て
+
 ## UTF-8 でリダイレクト出力する
 
 ```powershell
