@@ -1,11 +1,27 @@
 # ESLint
 
+# 初期設定
+eslint --init でウィザード
+
 # フォーマッタを使う
 eslint --fix hoge.js
 
 これで eslint ルールに従って hoge.js を直す。
 
-# タブ幅のみ適用する書き方
+# Rules
+
+## 複数行コメントの書き方
+https://eslint.org/docs/rules/multiline-comment-style
+
+stared block, bare, separate line の三種類がある
+
+```
+    "rules": {
+        "multiline-comment-style": ["error", "starred-block"]
+    }
+```
+
+## タブ幅のみ適用する書き方
 .eslintrc.json
 
 ```json

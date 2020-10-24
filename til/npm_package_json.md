@@ -1,5 +1,45 @@
 # npm
 
+## package.json コメントアウトは？
+- ダミーオブジェクトで囲む
+- npm では `//` がコメントアウト用に reserved されてる
+
+
+```
+"// " : {
+  ……
+}
+```
+
+[How do I add comments to package.json for npm install? - Stack Overflow](https://stackoverflow.com/questions/14221579/how-do-i-add-comments-to-package-json-for-npm-install)
+
+## npm install --save-dev って何？
+[npm installの–saveと–save-devの違いと-g – the2g](https://the2g.com/2280)
+
+> npm install -g
+
+グローバル
+
+> npm install とか npm install --save とか
+
+ローカル、かつdependenciesに追記。開発プリの実行（動作）に必要な場合。
+
+> npm install --save-dev
+
+ローカル、かつdevDependenciesに追記。テストツールや Linter など開発ツールの実行に必要な場合。
+
+以下 vue cli の例
+
+- dependencies
+    - vue
+    - vue-router
+    - vuex
+    - axios
+- devDependencies
+    - eslint
+    - @vue-cli-service
+    - vue-template-compiler
+
 ## npm install が dyld: Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.64.dylib エラーで動かん
 brew update node
 
