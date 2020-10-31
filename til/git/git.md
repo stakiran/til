@@ -1,5 +1,55 @@
 # Git
 
+## ●ブランチつくって push するまで
+branch でローカルにつくる
+
+checkout で切り替える
+
+git push origin xxxxx で指定ブランチに push。
+
+```
+$ git branch -a
+* master
+  remotes/origin/master
+
+$ git branch develop_xxx
+
+$ git checkout develop_xxx
+Switched to branch 'develop_xxx'
+
+$ git branch -a
+* develop_xxx
+  master
+  remotes/origin/master
+
+$ git push origin develop_xxx
+Total 0 (delta 0), reused 0 (delta 0)
+To https://...
+ * [new branch]      develop_xxx -> develop_xxx
+```
+
+## ●merge マージ
+マージされる側に checkout する。つまり merge とは merge from の意
+
+```
+git checkout master
+git merge branch1
+```
+
+## ローカルブランチとリモートブランチの削除
+両方消したい場合には以下のようにする
+
+- 1 ローカルから消す
+    - `git branch --delete bra1`
+- 2 リモート側も消す
+    - `git push origin :bra1`
+        - `(local):(remote)` のうち、ローカル側を空にしている
+        - 空の内容でリモート側を更新しろ = リモート側を消せ
+
+Q: ブラウザ画面でリモート側消した後、`git remote update` でローカル側に反映するには？
+
+- Ans. GitLab で動作しませんｄせいた（updateされても git branch --all でリモートブランチの表示が消えない）
+
 ## origin など remote のエイリアスを設定する
 
 ```
@@ -51,34 +101,6 @@ Tortoise Git と WinMerge を使う。
 - 4: 3 の結果を参考に、local repo の内容を、2 で展開したフォルダの内容に手作業で上書き
     - WinMerge で差分がなくなったら ok
 - 5: コミットする
-
-## ブランチつくって push するまで
-branch でローカルにつくる
-
-checkout で切り替える
-
-git push origin xxxxx で指定ブランチに push。
-
-```
-$ git branch -a
-* master
-  remotes/origin/master
-
-$ git branch develop_xxx
-
-$ git checkout develop_xxx
-Switched to branch 'develop_xxx'
-
-$ git branch -a
-* develop_xxx
-  master
-  remotes/origin/master
-
-$ git push origin develop_xxx
-Total 0 (delta 0), reused 0 (delta 0)
-To https://...
- * [new branch]      develop_xxx -> develop_xxx
-```
 
 ## git alias の登録
 

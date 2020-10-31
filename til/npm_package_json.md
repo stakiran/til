@@ -1,5 +1,21 @@
 # npm
 
+## cloc を npm run count として組み込みたい場合は？
+- npm install cloc で package.json に追記
+    - 余談: dependencies に入るので、devDependencies 側に移した方が良い
+
+scripts 配下に以下を
+
+```
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    ...
+    "count": "cloc ./ ……"
+  },
+```
+
+:memo: scripts 配下では ./node_modules/.bin が最優先パスになる
+
 ## package.json コメントアウトは？
 - ダミーオブジェクトで囲む
 - npm では `//` がコメントアウト用に reserved されてる

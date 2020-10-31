@@ -54,9 +54,14 @@ $ kill
 
 ```
 [alias]
-	s = 'status'
+	b = branch
+	c = commit
+	co = checkout
+	s = status
 	ss = status --short
-	d = 'diff'
+	d = diff
+	pl = pull
+	po = push origin
 	pom = push origin master
 	ls = log --pretty=oneline --abbrev-commit
 	ll = log --date=short --pretty=format:'%Cgreen%h %ad(%cr) %Creset%s'
