@@ -2,6 +2,25 @@
 - メール: https://outlook.office.com/mail/inbox
 - 予定表: https://outlook.office.com/calendar/view/month
 
+## 2016 オートコンプリート
+設定箇所
+
+- ファイル > オプション > メール > メッセージの送信セクションの「[宛先]、[CC]、……オートコンプリートのリストを使用して名前の候補を表示する」をオン
+
+レジストリ
+
+- HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Outlook\Preferences
+- ShowAutoSug
+    - 0: オフ
+    - 1: オン
+- 上記をオンオフしてみると、ここの値が変化することがわかる
+
+以下は何？
+
+- HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\Outlook
+- ShowAutoSug
+- これはグレーアウトにするかどうかの設定で、主なサーバー管理者が触るところ
+
 ## pst ファイルのサイズを小さくする
 - 不要メールを削除する
     - 特に添付ファイルはそのサイズ分だけ加算されててでかい
