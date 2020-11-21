@@ -2,24 +2,44 @@
 マジでピンと来なくてヒーヒー言ってる。
 
 ## つまり非同期って？
-- いつ終わるかわからない処理を、同期的直感的に書けるようにしたい
+- いつ終わるかわからない処理を、同期的に直感的に書けるようにしたい
 - 2020 年現時点では、promise/async/await 
-- promise
-    - :rabbit: ここがマジでわからん
-    - コード見てて promise が出たら「ウッ」てなる
-    - 「えーっと、promise は resolve と reject を指定するやつで、……」 ← こうなる
-    - 毎回頭パンクして先に進めん
-    - 「こういうことなんだよ」とスッと理解できる解釈が欲しい
-    - `promise.then(A,B).then(C,D).then(E,F)`
-        - もっというとこれをすんなり理解する解釈
 
-## promise とは何を返すもの？
-Ans: 何も返しません（と理解した方がわかりやすそう）
+## Q: promise とは何を返すもの？
+Ans: 未来のある時点で値を持つオブジェクト
 
-- :x: ~~その場で何らかの値やオブジェクトが戻ってくる~~ この発想はやめよ
-- :o: promise をつくってる ← 非同期な処理を **セットしていったん放置する**、と考える
+[Promise - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
-## promise チェーンって何なの？
+> これにより、非同期メソッドは、最終的な値を返すのではなく、未来のある時点で値を持つ Promise を返すことで、同期メソッドと同じように値を返すことができるようになります。
+
+**未来のある時点で値を持つ Promise**。
+
+### Q: promise は値を持っていない時はどうなるの？
+Ans: 別にどうもならない。
+
+```
+obj = axios.get(……)
+```
+
+この obj は promise オブジェクトであり、get した結果が代入されたり、後から代入されたりすることはない。あくまでも obj には promise オブジェクトが入っているだけ
+
+### Q: じゃあ値が入る時はどこで受け取るの？
+Ans: then() で指定したコールバック関数
+
+### :x: Q: 値が入るまでの間に then を定義し忘れたらどうなるの？
+Ans: いまいちわからん
+
+```
+f = function(args){
+  // 手に入れた値を使って何かする関数
+}
+
+obj = axios.get(……)
+……
+obj.then(f) // ★ここに入るまでに get 内部の処理が終わって値が入ったら？
+```
+
+## Q: promise チェーンって何なの？
 azu さんの本が一番わかりやすかった
 
 - https://azu.github.io/promises-book/#chapter2-how-to-write-promise
@@ -38,8 +58,8 @@ azu さんの本が一番わかりやすかった
     - :x: `return promise;`
     - :o: `return promise.then(…)`
 
-## then() は何を返す？
-Promise
+## Q: then() は何を返す？
+Ans. Promise
 
 [Promise.prototype.then() - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise/then)
 
@@ -115,7 +135,6 @@ readFiles()
     - doSomething じゃなくてもっとわかりやすい例にしてほしい
     - Audio処理の例で説明してほしい
     - そもそも「コールバック地獄」がピンと来ない
-        - 
 
 ===
 
@@ -135,11 +154,6 @@ promise.then(successCallback, failureCallback);
 ```
 
 ## 最低限1 Promiseの本
-- ちょっと重い
-
-
-===
-
 [JavaScript Promiseの本](https://azu.github.io/promises-book/#chapter1-what-is-promise)
 
 登場人物

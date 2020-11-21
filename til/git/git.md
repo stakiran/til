@@ -38,16 +38,6 @@ git merge branch1
 
 別の覚え方として、**今チェックアウトしているブランチが操作される** でもいい。マージする場合、操作されるのはマージされる側だから、merge は merge from なのだと自明になる。
 
-## git branch -a で、消したはずのリモートブランチが表示されたままになる
-- サービス側の機能で消した、他人が消した等で起こる
-- 以下で念の為 dry run した後、問題なければ実行
-
-```
-git remote prune origin --dry-run
-```
-
-参考: [消したはずのリモートブランチがローカルで表示されるので削除する - Qiita](https://qiita.com/nantekkotai/items/0ca7c9e850eff65aaf66)
-
 ## bra1 の更新を bra2 に取り込む
 
 ```
@@ -77,7 +67,17 @@ git commit --amend -m "修正後メッセージ"
 
 Q: ブラウザ画面でリモート側消した後、`git remote update` でローカル側に反映するには？
 
-- Ans. GitLab で動作しませんｄせいた（updateされても git branch --all でリモートブランチの表示が消えない）
+- Ans. 下記参照。
+
+### git branch -a で、消したはずのリモートブランチが表示されたままになる
+- サービス側の機能で消した、他人が消した等で起こる
+- 以下で念の為 dry run した後、問題なければ実行
+
+```
+git remote prune origin --dry-run
+```
+
+参考: [消したはずのリモートブランチがローカルで表示されるので削除する - Qiita](https://qiita.com/nantekkotai/items/0ca7c9e850eff65aaf66)
 
 ## origin など remote のエイリアスを設定する
 

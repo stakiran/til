@@ -1,5 +1,9 @@
 # Google Chrome
 
+## テキストエンコーディング変更
+- デフォではない
+- https://chrome.google.com/webstore/detail/charset/oenllhgkiiljibhfagbfogdbchhdchml/
+
 ## テキストボックスへの日本語入力が超遅い
 
 ### 対処1: Chrome を再起動する
