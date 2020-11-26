@@ -1,9 +1,18 @@
 # ESLint
 
-# 初期設定
+## import hoge from `@/xxxx.js` で hoge を使わない場合にエラー無視したい
+
+```
+// eslint-disable-next-line no-unused-vars
+import hoge from '@/xxxx.js';
+```
+
+[ESLintのコメントでのルール制御 - Qiita](https://qiita.com/nju33/items/2d0cfea4fffbfdbff87a)
+
+## 初期設定
 eslint --init でウィザード
 
-# フォーマッタを使う
+## フォーマッタを使う
 eslint --fix hoge.js
 
 これで eslint ルールに従って hoge.js を直す。

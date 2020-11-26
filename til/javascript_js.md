@@ -19,6 +19,88 @@ for(const cardName of listByArray) {
 }
 ```
 
+## ●アロー関数
+
+### ケース別
+tested with [Repl.it](https://repl.it/languages/javascript).
+
+```js
+assert = console.assert
+
+// 引数が二つ以上で、処理が二行以上の場合,
+// (引数) => {処理} になる.
+f = function(a,b){
+    var ret=a+b
+    return ret
+}
+a = (a,b) => {var ret=a+b; return ret;}
+assert(f(1,100)===a(1,100))
+
+// 処理が一行の場合, 右辺の {} は省略できる.
+// ただし return は省略できない
+f = function(a,b){
+    return a+b
+}
+a1 = (a,b) => {return a+b}
+a2 = (a,b) => a+b
+a3 = (a,b) => {a+b}
+assert(f(1,100)===a1(1,100))
+assert(f(1,100)===a2(1,100))
+assert(undefined===a3(1,100))
+
+// 引数が一つの場合, 左辺の () は省略できる.
+f = function(a){
+    var ret = a+100
+    return ret
+}
+a1 = (a) => {var ret=a+100; return ret;}
+a2 = a => {var ret=a+100; return ret;}
+assert(f(1,100)===a1(1))
+assert(f(1,100)===a2(1))
+
+// 処理が一行で、引数が一つの場合,
+// 左辺の () も 右辺の {} も省略できる
+f = function(a){
+    return a+100
+}
+a1 = (a) => {return a+100}
+a2 = (a) => a+100
+a3 = a => {return a+100}
+a4 = a => a+100
+assert(f(1,100)===a1(1))
+assert(f(1,100)===a2(1))
+assert(f(1,100)===a3(1))
+assert(f(1,100)===a4(1))
+```
+
+### 一般論
+- `function(args){...}` を `(args) => {...}` と書ける
+- 省略
+    - 処理が一行の場合、`(args) => procedure` を略してもいい
+    - 引数が一つの場合、`arg => {}` とカッコなしでもいい
+    - 引数も処理も一つの場合、`arg => procedure` だけで済むことになる
+    - 引数がない場合、`() => {...}` と空かっこだけ書く
+- return の省略
+    - 処理が一行の場合、return が自動で補われる
+    - 例1:
+        - ES6: `(args) => {expression}`
+        - ES5: `function(args){return expression}`
+    - 例2: 全部省略場合
+        - ES6: `arg => expression`
+        - ES5: `function(arg){return expression}`
+- this
+    - `var self=this;` が自動で補われる感じ
+    - 他のプログラミング言語みたくレキシカルな挙動で使えるよ？
+
+[JavaScript アロー関数を説明するよ - Qiita](https://qiita.com/may88seiji/items/4a49c7c78b55d75d693b)
+
+## セミコロン ; は必要ですか？
+- 無くても動くが……
+    - 意図しない連結のされ方をすることがあってハマりがちな
+    - `addfunc = (a,b) => {const ret=a+b; return ret;}` など、一行で複数文書きたい時には必須
+- ハマるの防ぎたいなら、ちゃんと付けるのが確実
+- ESLint などで制限するのもアリ
+
 ## export したオブジェクトを import したら undefined になってる件
 options.js
 
@@ -222,27 +304,6 @@ console.log(sum(...numbers)); // 6
 
 - Python でいう `*args` や `**kwargs` みたいなもの
 - js のスプレッド演算子ではリストもオブジェクトも同じ `...` でいける
-
-## アロー関数
-- `function(args){...}` を `(args) => {...}` と書ける
-- 省略
-    - 処理が一行の場合、`(args) => procedure` を略してもいい
-    - 引数が一つの場合、`arg => {}` とカッコなしでもいい
-    - 引数も処理も一つの場合、`arg => procedure` だけで済むことになる
-    - 引数がない場合、`() => {...}` と空かっこだけ書く
-- return の省略
-    - 処理が一行の場合、return が自動で補われる
-    - 例1:
-        - ES6: `(args) => {expression}`
-        - ES5: `function(args){return expression}`
-    - 例2: 全部省略場合
-        - ES6: `arg => expression`
-        - ES5: `function(arg){return expression}`
-- this
-    - `var self=this;` が自動で補われる感じ
-    - 他のプログラミング言語みたくレキシカルな挙動で使えるよ？
-
-[JavaScript アロー関数を説明するよ - Qiita](https://qiita.com/may88seiji/items/4a49c7c78b55d75d693b)
 
 ## var let const
 定数は const で良い。

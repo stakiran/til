@@ -1,5 +1,11 @@
 # Vue.js
 
+## Invalid prop: type check failed for prop "propName". Expected Object, got Null
+prop propName の初期値が、expect のものになってないのが原因。
+
+- prop では Object にしているのに、data 側の初期値では null にしているとか
+    - 正しくは `{}`
+
 ## Vue コンポーネントから setInterval を動かしたい
 - this が Vue インスタンスを指してないので `bind(this)` すること.
 - ちなみに clear しているのは全画面でタイマーが有効になったままなのを防ぐため
