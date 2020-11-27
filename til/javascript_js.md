@@ -135,6 +135,11 @@ Q: Named Export だけで良くない？Default って何の意味があるの�
 
 [javascript - What does "export default" do in JSX? - Stack Overflow](https://stackoverflow.com/questions/36426521/what-does-export-default-do-in-jsx/36426988#36426988)
 
+### Q: import { JSZip } from 'jszip' で new JSZip() すると「コンストラクタじゃない」エラー
+import JSZip from 'jszip' で。
+
+……やっぱり `{}` の違いがわからん。
+
 ## `@` is 何？
 - webpack の記法で、`src/` で置き換える（ことが多い）。
 

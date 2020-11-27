@@ -1,6 +1,104 @@
 # Javascript 非同期処理
 マジでピンと来なくてヒーヒー言ってる。
 
+- [Repl.it](https://repl.it/languages/javascript) で MDN のコードをいじりながらすると理解が捗る
+
+# 非同期処理を待たせたい場合の async await の書き方
+from [async/await 入門（JavaScript） - Qiita](https://qiita.com/soarflat/items/1a9613e023200bbebcb3)
+
+まとめると
+
+- 1 そもそも非同期処理が promise を返すようになっていること
+- 2 待たせたい非同期処理 f のラッパーをつくる
+    - async function としてつくる
+- 3 async function ラッパーの中で、1の処理を呼び出す
+    - このとき await をつける
+- 4 呼び出し元では、2 のラッパーの then() にて、待たせた後の続きを書く
+
+## 1 普通に書くと
+> 普通にやろうとすると
+> value is [object Promise] ← 10 が入るはず
+
+↑ こうなる。待たれない。
+
+```
+// しばらくしてから結果が返ってくる, promise を返す関数
+// (ここでは2秒後に value を 2 倍にした値が返ってくる)
+function sampleResolve(value) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(value * 2);
+        }, 2000);
+    })
+}
+
+console.log('普通にやろうとすると')
+const value = sampleResolve(5)
+console.log(`value is ${value} ← 10 が入るはず`)
+```
+
+## 2 async/await で書くと？
+> (2秒経った後に)
+> async/awaitで書くと
+> 10
+
+↑ こうなる。ちゃんと待ってくれる。
+
+```
+// しばらくしてから結果が返ってくる関数
+// (ここでは2秒後に value を 2 倍にした値が返ってくる)
+function sampleResolve(value) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(value * 2);
+        }, 2000);
+    })
+}
+
+async function sample() {
+    const result = await sampleResolve(5);
+    return result;
+}
+
+sample().then(result => {
+    console.log(result);
+});
+```
+
+# await なくても非同期処理書けるけど、なんで必要なの？
+Ans: その非同期処理で結果が出るまで待たせるために必要
+
+[await - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/await) の「promiseの解決を待つ」より
+
+await がある場合。
+
+- resolveAfter2Seconds という非同期処理で結果が出るまで待つので、2秒後に 10 が print される
+
+```
+function resolveAfter2Seconds(x) { 
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(x);
+    }, 2000);
+  });
+}
+
+async function f1() {
+  var x = await resolveAfter2Seconds(10);
+  console.log(`Output: ${x}`); // 10
+}
+
+f1();
+```
+
+await がない場合。
+
+- console.log が即座に `Output: [object Promise]` となる
+- 2秒後に処理が終了する
+- 待てない
+
+# ==== 理解編 ====
+
 ## つまり非同期って？
 - いつ終わるかわからない処理を、同期的に直感的に書けるようにしたい
 - 2020 年現時点では、promise/async/await 
