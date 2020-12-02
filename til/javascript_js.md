@@ -179,25 +179,6 @@ import {options} from "@/options.js";
 - `import 名前` は、インポート先のデフォルトを読み込むって挙動になる
     - が、options.js では export default はしてないので undefined
 
-### Default export とは？
-Js ES6 の import/export には二種類ある
-
-- (Default Export) export default でエクスポートしたものを、import xxx で「xxx という名前で一括」アクセスする
-- (Named Export) export xxx でエクスポートしたものを、import { xxx } で「個別に」アクセスする
-
-Q: Named Export だけで良くない？Default って何の意味があるの？
-
-- 利用者側は import xxx と書いて、 xxx.member とアクセスするだけで使える
-- 開発者側は、公開したいものを export default で定義していくだけで良い
-- :rabbit: まだよくわかってない
-
-[javascript - What does "export default" do in JSX? - Stack Overflow](https://stackoverflow.com/questions/36426521/what-does-export-default-do-in-jsx/36426988#36426988)
-
-### Q: import { JSZip } from 'jszip' で new JSZip() すると「コンストラクタじゃない」エラー
-import JSZip from 'jszip' で。
-
-……やっぱり `{}` の違いがわからん。
-
 ## `@` is 何？
 - webpack の記法で、`src/` で置き換える（ことが多い）。
 
