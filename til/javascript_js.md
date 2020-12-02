@@ -94,6 +94,38 @@ assert(f(1,100)===a4(1))
 
 [JavaScript アロー関数を説明するよ - Qiita](https://qiita.com/may88seiji/items/4a49c7c78b55d75d693b)
 
+## template string テンプレート文字列の中でバッククォート使いたい
+普通にエスケープしたらいける
+
+```js
+readme_md=`# xxx
+
+how to use
+
+\`\`\`
+$ hoge --input fuga.txt
+\`\`\`
+
+```
+
+## object を走査(for .. of)したい
+他にもある
+
+- [JavaScriptで配列やオブジェクトをループする良い方法を真剣に検討してみた - Qiita](https://qiita.com/endam/items/808a084859e3a101ab8f)
+
+### Array.forEach
+
+```js
+Object.keys(obj1).forEach(
+    (key) => {
+        ……
+    }
+)
+```
+
+- Q: continue したい
+    - return
+
 ## セミコロン ; は必要ですか？
 - 無くても動くが……
     - 意図しない連結のされ方をすることがあってハマりがちな
@@ -101,7 +133,24 @@ assert(f(1,100)===a4(1))
 - ハマるの防ぎたいなら、ちゃんと付けるのが確実
 - ESLint などで制限するのもアリ
 
-## export したオブジェクトを import したら undefined になってる件
+## named export と default export
+default export
+
+- export default する側では「デフォルト空間」に export していく
+- import する側では `import 名前 from インポート先` で、インポート先のデフォルト空間に名前でアクセス
+    - python の import と同じ挙動
+
+named export
+
+- export する側では `export 名前` で個別に export していく
+- import する側では `import {名前} from インポート先` で、インポート先から個別の名前を import する
+
+詳しくは
+
+- [export - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/export)
+- [import - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/import)
+
+### 問題1: export したオブジェクトを import したら undefined になってる件
 options.js
 
 ```
@@ -111,15 +160,24 @@ const options = new Option(……);
 export { options }
 ```
 
-import する側
+:x: import する側（undefinedになるパターン）
 
 ```
-import { options } from "@/options.js";
+import options from "@/options.js";
 ```
 
-- `{}` で囲むと良い
-    - この囲みがないと options が undefined になる
-- [javascript - ES6 import importing undefined - Stack Overflow](https://stackoverflow.com/questions/41416632/es6-import-importing-undefined)
+:o: import する側（正しい）
+
+```
+import {options} from "@/options.js";
+```
+
+解説:
+
+- export する側では named export している
+- named export したものを import する構文は `import {名前}`
+- `import 名前` は、インポート先のデフォルトを読み込むって挙動になる
+    - が、options.js では export default はしてないので undefined
 
 ### Default export とは？
 Js ES6 の import/export には二種類ある

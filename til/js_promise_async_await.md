@@ -3,6 +3,51 @@
 
 - [Repl.it](https://repl.it/languages/javascript) で MDN のコードをいじりながらすると理解が捗る
 
+# 非同期処理をチェーンさせたい場合
+
+## async/await で書く場合
+
+```js
+function f1(value) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            const result = value*2
+            resolve(result);
+        }, 1000);
+    })
+}
+
+function f2(value) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            const result = value*10
+            resolve(result);
+        }, 1000);
+    })
+}
+
+function f3(value) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            const result = value*value
+            resolve(result);
+        }, 1000);
+    })
+}
+
+async function sample() {
+    const f1_result = await f1(5);
+    const f2_f1_result = await f2(f1_result)
+    const f3_f2_result = await f3(f2_f1_result)
+    const result = f3_f2_result
+    return result;
+}
+
+sample().then(result => {
+    console.log(result); // 約3秒後に 10000
+});
+```
+
 # 非同期処理を待たせたい場合の async await の書き方
 from [async/await 入門（JavaScript） - Qiita](https://qiita.com/soarflat/items/1a9613e023200bbebcb3)
 
@@ -17,6 +62,7 @@ from [async/await 入門（JavaScript） - Qiita](https://qiita.com/soarflat/ite
 
 ## 1 普通に書くと
 > 普通にやろうとすると
+>
 > value is [object Promise] ← 10 が入るはず
 
 ↑ こうなる。待たれない。
@@ -38,11 +84,11 @@ console.log(`value is ${value} ← 10 が入るはず`)
 ```
 
 ## 2 async/await で書くと？
-> (2秒経った後に)
-> async/awaitで書くと
+2秒経った後に
+
 > 10
 
-↑ こうなる。ちゃんと待ってくれる。
+こうなる。ちゃんと待ってくれる。
 
 ```
 // しばらくしてから結果が返ってくる関数
@@ -124,19 +170,6 @@ obj = axios.get(……)
 ### Q: じゃあ値が入る時はどこで受け取るの？
 Ans: then() で指定したコールバック関数
 
-### :x: Q: 値が入るまでの間に then を定義し忘れたらどうなるの？
-Ans: いまいちわからん
-
-```
-f = function(args){
-  // 手に入れた値を使って何かする関数
-}
-
-obj = axios.get(……)
-……
-obj.then(f) // ★ここに入るまでに get 内部の処理が終わって値が入ったら？
-```
-
 ## Q: promise チェーンって何なの？
 azu さんの本が一番わかりやすかった
 
@@ -151,7 +184,7 @@ azu さんの本が一番わかりやすかった
     - finally(最後のthen)
         - `….catch().then()` でも `….then().catch()` でもいい
 - then(a).then(b) で a から b に値を渡すには、a で return し、b の引数で受け取ります
-    - もっというと new Promise 時にわたす  `resolve(xxx)` も、xxx を return している
+    - もっというと new Promise 時にわたす `resolve(xxx)` も、xxx を return している
 - チェーンで繋げることを前提とした関数をつくる場合、then() の結果を return するつくりにする
     - :x: `return promise;`
     - :o: `return promise.then(…)`
