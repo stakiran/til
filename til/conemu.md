@@ -14,19 +14,18 @@
 これでいける。Predefined として Systme, Ctrl+Left, Switch tab to left などで割り当てられてる。
 
 ## タブをコンパクトにする
-general > appearance
-  show buttons in tab bar オフ
-  show search field in tab bar オフ
-  少しでもタブ広げるため
-
-general > size & pos
-  auto save window size ... on exit
-
-general > tab bar
-  tab templates > console は %s にする（titleのみ）
-  skip words... に「|管理者:」を追加
+- general > appearance
+    - show buttons in tab bar オフ
+    - show search field in tab bar オフ
+    - 少しでもタブ広げるため
+- general > size & pos
+    - auto save window size ... on exit
+- general > tab bar
+    - tab templates > console は %s にする（titleのみ）
+    - skip words... に「|管理者:」を追加
 
 ## ConEmu を指定ディレクトリをカレントディレクトリにして呼び出す
+
 [ConEmu | ConEmu.exe Command Line Switches](http://conemu.github.io/en/ConEmuArgs.html)
 
 上記リファレンスを見て頑張れば実現できるけれど、いちいち試すのもかったるいので、よく使うものを挙げてみた。
@@ -45,7 +44,8 @@ general > tab bar
 "C:\Program Files\conemu\ConEmu.exe" /Dir "c:\your_workspace" /single -cmd cmd /k dir
 
 新規した後に指定コマンドを実行(複数)
-"C:\Program Files\conemu\ConEmu.exe" /Dir "c:\your_workspace" /single -cmd cmd /k date /t & time /t & cd & prompt $G$G$G
+"C:\Program Files\conemu\ConEmu.exe" /Dir "c:\your_workspace" /single -cmd cmd /k "date /t & time /t & cd & prompt $G$G$G"
+"C:\Program Files\ConEmu\ConEmu64.exe" -Dir "c:\your_workspace" -Single -cmd cmd /k "title workspace1 & cd"
 ```
 
 ### open conemu here

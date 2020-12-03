@@ -77,7 +77,7 @@ Use `b.bat` to build this readme TOC page.
 - [hosts drivers etc hosts ](hosts.md) (22L)
 - [iphone iPhone](iphone.md) (55L)
 - [iphone_reminder iPhone リマインダー](iphone_reminder.md) (34L)
-- [javascript_js Javascript](javascript_js.md) (450L)
+- [javascript_js Javascript](javascript_js.md) (451L)
 - [ja_jp_en_us_lang_region_code ja-jp とか en-us とかそういうやつ locale ロケール](ja_jp_en_us_lang_region_code.md) (15L)
 - [jq jq](jq.md) (67L)
 - [jquery jQuery](jquery.md) (389L)

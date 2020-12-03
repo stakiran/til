@@ -94,6 +94,26 @@ assert(f(1,100)===a4(1))
 
 [JavaScript アロー関数を説明するよ - Qiita](https://qiita.com/may88seiji/items/4a49c7c78b55d75d693b)
 
+## object を extend したい(deep merge)したい
+- 無理です
+- shallow merge なら `const merged = Object.assign(a, b)` でいける
+
+## クラスのインスタンスメソッドを promise chain に渡してる場合に、this が undefined になる件
+呼び出し元で .bind(this) して束縛する
+
+```js
+class{
+  // ……
+  method(){
+    const promise = this._method1()
+      .then(this._method2)
+      .then(this._method3.bind(this))
+  }
+  // ……
+```
+
+参考: [クラス内のPromiseでundefined - Qiita](https://qiita.com/takoji3/items/35e72f19f68a50f1b323)
+
 ## template string テンプレート文字列の中でバッククォート使いたい
 普通にエスケープしたらいける
 
