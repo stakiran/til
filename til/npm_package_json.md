@@ -74,5 +74,17 @@ see [npmのエラー解決「dyld: Library not loaded: /usr/local/opt/icu4c/lib/
 - [Debugging - Getting Started - Node.js](https://nodejs.org/en/docs/guides/debugging-getting-started/)
 - [package-lock.jsonについて知りたくても聞けなかったこと - Qiita](https://qiita.com/yfujii1127/items/7ca887a45e0855917279)
 
+[package-lock.jsonについて知りたくても聞けなかったこと - Qiita https://qiita.com/fj_yohei/items/7ca887a45e0855917279]
+
+- package-lock.json がない場合の弊害例が書いてある
+    - express を使ってる、あるプロジェクト
+    - express 4.15.4 が最新
+    - A さんが clone して npm install。4.15.4
+    - メンテナが verup して 4.15.5 になった
+    - B さんが clone してnpm install。4.15.5
+    - A さんと B さんで環境食い違うやん
+- package-lock.json があると 4.15.4 を使え！が厳密に書いてある
+    - ので B さんも 4.15.4 になる
+
 ## コマンドリファレンス
 [npmコマンドの使い方 - Qiita https://qiita.com/yoh-nak/items/8446bf12094c729d00fe]

@@ -38,6 +38,29 @@ git merge branch1
 
 別の覚え方として、**今チェックアウトしているブランチが操作される** でもいい。マージする場合、操作されるのはマージされる側だから、merge は merge from なのだと自明になる。
 
+### master の最新内容を開発ブランチ bra1 にマージしたい
+
+```
+git co master
+git pull origin master
+git co bra1
+git merge origin master
+```
+
+master を更新して、bra1 に移って master をマージするだけだが、origin が必要（なんで？）。
+
+## リモートにあるブランチをローカルでマージしたい
+
+```
+$ git fetch origin (branchname)
+```
+
+これでローカルに取り込まれるので、あとは origin 指定で merge する。
+
+```
+git merge origin/(branchname)
+```
+
 ## bra1 の更新を bra2 に取り込む
 
 ```

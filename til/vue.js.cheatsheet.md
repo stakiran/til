@@ -97,6 +97,18 @@ v-bind の略。
         - `<a v-on:click.stop="doThis"></a>`
         - :point_up: onSubmit や doThis はただのメソッド名なので注意（そういう特殊キーワードがあるのかと悩んでた）
 
+### @ is 何?
+
+```html
+<!-- 完全な構文 -->
+<a v-on:click="doSomething"> ... </a>
+
+<!-- 省略記法 -->
+<a @click="doSomething"> ... </a>
+```
+
+[テンプレート構文 — Vue.js](https://jp.vuejs.org/v2/guide/syntax.html#v-on-%E7%9C%81%E7%95%A5%E8%A8%98%E6%B3%95)
+
 ### キー検出 キーコード keycode keyboard
 - `<input v-on:keyup.enter="submit">`
     - >`key` が `Enter` のときだけ、`vm.submit()` が呼ばれます

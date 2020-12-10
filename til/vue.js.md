@@ -1,5 +1,46 @@
 # Vue.js
 
+## 子コンポーネントから親コンポーネントに渡す
+
+### 子
+- コンポーネント名は `name: 'ChildComponentName'`
+- 親から渡してもらう引数は, props で定義する
+- 親にデータを渡したい場合は, `this.$emit('event-name', data)` を実行する
+
+### 親
+
+```vue
+<template>
+  <div>
+    <ChildComponentName
+      :prop1="'文字列の場合は囲み忘れずに'"
+      :prop2="boolVar"
+      v-on:event-name="method1" // ★2 method1() でも method1(args) でもない
+    />
+  </div>
+</template>
+
+// ……
+
+<script>
+import ChildComponent from "@/path/to/ChildComponent.vue";
+
+export default {
+  name: 'ParentComponent',
+
+  components: {
+    ChildComponent // ★1 コンポーネントとしてロードする
+  },
+
+// ……
+
+  methods: {
+    method1: function(args){ // ★3 args に emit された data が入ってくる
+      // よしなに
+    },
+
+```
+
 ## Invalid prop: type check failed for prop "propName". Expected Object, got Null
 prop propName の初期値が、expect のものになってないのが原因。
 
