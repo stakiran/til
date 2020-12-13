@@ -1,5 +1,33 @@
 # npm
 
+## npm ERR! code ELIFECYCLE npm ERR! errno 1 ってなんですか
+Ans: npm scripts による実行結果が return 1 してる。
+
+return 0 じゃないとこのエラーが出る。
+
+```
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+```
+
+
+## npm uninstall
+npm uninstall でいける。
+
+- [npmのuninstallコマンドを忘れがちなのでメモ - Qiita https://qiita.com/mamosan/items/6f1cf71ccd82216fe25b]
+    - rm, uninstall, un, remove など色んなエイリアスがあるみたい
+
+## npm install されているパッケージ（が持つコマンド）を実行するには？
+npx コマンド。
+
+```
+$ npx eslint .
+```
+
+npx をかわすと、node_modules/eslint/bin/eslint.js など bin 配下のブツを補完してくれる。
+
+参考: [npm 5.2.0の新機能！ 「npx」でローカルパッケージを手軽に実行しよう - Qiita](https://qiita.com/tonkotsuboy_com/items/8227f5993769c3df533d)
+
 ## cloc を npm run count として組み込みたい場合は？
 - npm install cloc で package.json に追記
     - 余談: dependencies に入るので、devDependencies 側に移した方が良い
@@ -38,7 +66,7 @@ scripts 配下に以下を
 
 > npm install とか npm install --save とか
 
-ローカル、かつdependenciesに追記。開発プリの実行（動作）に必要な場合。
+ローカル、かつdependenciesに追記。開発アプリの実行（動作）に必要な場合。
 
 > npm install --save-dev
 

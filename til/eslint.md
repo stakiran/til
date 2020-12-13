@@ -1,5 +1,15 @@
 # ESLint
 
+## typescript-eslint のルールを ignore したい場合
+ちゃんと正式なルール名を指定すること
+
+`@typescript-eslint/ルール名`
+
+```
+	/* eslint-disable-next-line @typescript-eslint/no-empty-function */
+	const dummy_for_menu_separator = vscode.commands.registerCommand('tritask.dummy', () => {});
+```
+
 ## import hoge from `@/xxxx.js` で hoge を使わない場合にエラー無視したい
 
 ```
