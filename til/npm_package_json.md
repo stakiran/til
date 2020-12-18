@@ -1,5 +1,15 @@
 # npm
 
+## @username/packagename と packagename の違いは？
+- @username/ は名前空間として機能している
+    - packagename だけだと名前先に取られたりしてるから
+- 特に readme で @username/ が指定されてる場合、従うのが確実
+    - 2020/12/15 vue-treeselect
+    - :o: @riophae/vue-treeselect だと動作した
+    - :x: vue-treeselect だと（古いのか）options に入れたデータが反映されなかった
+
+参考: [【菅江真澄備忘録】npmでのインストール時に使う「@」の意味 - 菅江真澄遊覧記](https://mass-min.com/archives/1018)
+
 ## npm ERR! code ELIFECYCLE npm ERR! errno 1 ってなんですか
 Ans: npm scripts による実行結果が return 1 してる。
 

@@ -94,6 +94,32 @@ assert(f(1,100)===a4(1))
 
 [JavaScript アロー関数を説明するよ - Qiita](https://qiita.com/may88seiji/items/4a49c7c78b55d75d693b)
 
+## クラス定数
+
+```js
+class Class1{
+    static get CLASSVAR1(){
+      return 'クラス定数1'
+    }
+}
+```
+
+呼び出す時:
+
+- :o: Class1.CLASSVAR1
+- :x: this.CLASSVAR1
+- :x: class.CLASSVAR1
+
+## const a,b = getTuple() 的なことがしたい 分割代入
+
+```js
+// func は [str, str] を返すとする「
+const [a, b] = func()
+```
+
+- 参考: [分割代入 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+    - 他にも rest 的にまとめたり、要らんの切り捨てたりもできるっぽい
+
 ## object を extend したい(deep merge)したい
 - 無理です
 - shallow merge なら `const merged = Object.assign(a, b)` でいける

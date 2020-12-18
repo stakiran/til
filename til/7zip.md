@@ -2,6 +2,16 @@
 
 ## 圧縮時に指定フォルダを除外する
 
+### 例2: git ローカルリポジトリ
+
+```
+%bin% a gitlab_team1.zip "D:\work\gitlab\team1" -xr!*node_modules* -xr!*.git*
+```
+
+.git と node_modules を省いている。
+
+### 例1: Google Chrome
+
 ```
 %bin% a chrome_default.zip "%localappdata%\Google\Chrome\User Data\Default" -xr!*Worker* -xr!*Cache* -xr!*IndexedDB*
 ```

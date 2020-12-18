@@ -1,5 +1,10 @@
 # prettier
 
+## オプション
+- [Options · Prettier](https://prettier.io/docs/en/options.html)
+- [Configuration File · Prettier](https://prettier.io/docs/en/configuration.html)
+    - .prettierrc をつくるなど、色んな書き方がある
+
 ## 手元で使いたい場合
 
 ```

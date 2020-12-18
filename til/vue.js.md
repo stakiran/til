@@ -1,5 +1,29 @@
 # Vue.js
 
+
+## [Vue warn]: Invalid prop: type check failed for prop "XXXX". Expected Boolean, got String. が出る
+- template 中の記載を `:bool-option=false` にする
+    - `:` あるいは `v-bind:` がないと文字列扱いされてしまう
+
+参考: [Vue.jsのpropsでBooleanを渡そうとしたときの型エラー - Qiita](https://qiita.com/smasato/items/8cf8edfbad3797c3b345)
+
+## Invalid default value for prop "XXX": Props with type Object/Array must use a function が出る件
+
+```js
+  props:{
+    objProp:{
+      type: Object,
+      default: () => {return {}}, // デフォ値を返す関数を指定する
+    },
+```
+
+- prop で定義した object や array は参照として扱われれう
+    - ので **値そのものを返したら呼び出し元で破壊されるかもしれない**
+    - というわけで Vue さんが警告出してる
+    - 破壊されないよう、返したい情報をつくる関数（ファクトリー）を経由しなさい
+
+参考: [[Vue.js] なぜpropsのdefault値にObjectやArrayを指定する際にfactory関数にする必要があるのか - Qiita](https://qiita.com/hogesuke_1/items/c74463de1a1eee802ca8)
+
 ## 子コンポーネントから親コンポーネントに渡す
 
 ### 子
