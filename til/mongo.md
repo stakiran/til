@@ -1,4 +1,4 @@
-# MongoB Shell
+# Mongo Shell
 
 ## ログイン
 
@@ -22,4 +22,23 @@ show collections
 ```
 use (DB名)
 db.(Collection名).find()
+```
+
+### 指定キーだけ表示する
+
+```
+db.collectionXYZ.find({}, {keyname:1})
+```
+
+### pretty print
+
+```
+db.collectionXYZ.find({}, {keyname:1}).pretty()
+```
+
+## ファイルにも出力したい
+mongo shell コマンドの段階で tee する。
+
+```
+$ mongo -u …… | tee output.txt
 ```

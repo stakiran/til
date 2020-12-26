@@ -1,5 +1,19 @@
 # CSS
 
+# table のセンタリング
+```html
+<table class="center">
+```
+
+```css
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+```
+
+[How To Center a Table](https://www.w3schools.com/howto/howto_css_table_center.asp)
+
 # n番目
 :nth-child(n)
 

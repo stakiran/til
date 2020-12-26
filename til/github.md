@@ -1,5 +1,36 @@
 # GitHub
 
+## wincred on Windows で HTTPS 認証を再登録する
+探して消す。
+
+```
+$ cmdkey /list
+……
+    ターゲット: LegacyGeneric:target=git:https://github.com
+    種類: 汎用
+    ユーザー: stakiran
+    ローカル コンピューターの常設
+……
+
+$ cmdkey /delete:git:https://github.com
+```
+
+消えたので、もう一度登録する。
+
+```
+$ (push とかすると)
+Username for 'https://github.com': stakiran
+Password for 'https://stakiran@github.com': (パスワードまたは Personal Access Token を入れる)
+
+$ cmdkey /list
+……
+    ターゲット: LegacyGeneric:target=git:https://stakiran@github.com
+    種類: 汎用
+    ユーザー: stakiran
+    ローカル コンピューターの常設
+……
+```
+
 ## Personal Token で clone できるようにするまで
 - 1: トークンつくる
     - https://github.com/settings/tokens
@@ -13,7 +44,7 @@ git clone https://MYUSERNAME:TOKEN@github.com/USERNAME/REPONAME
 
 :warning: .git/clone にトークンがベタ書きされるので注意
 
-## Q: https://github.com/settings/keys の Last used が last week で正しくなさそうだが？
+## Q: https://github.com/settings/keys や https://github.com/settings/tokens で Last used の日時が正しくなさそうだが？
 Ans: 正しいです
 
 数秒前に使ったばかりでも Last used within the last week と出る。
