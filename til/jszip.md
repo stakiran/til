@@ -3,7 +3,6 @@
 ## zip オブジェクトに「別からダウンロードしてきた zip ファイルの中身(blob)」を入れる
 - loadAsync で読み込ませる
 
-
 ```js
 // blobs は [blob, blob, ……]
 // blob は以下参照
@@ -31,7 +30,7 @@ const config = {
     'Content-Type' : 'application/zip',
   },      
 }
-axios.get(roleFilePath, config).then((response) => {
+axios.get(url, config).then((response) => {
   const blob = response.data
   return blob
 )
