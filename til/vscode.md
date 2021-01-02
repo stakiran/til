@@ -1,9 +1,35 @@
 # Visual Studio Code(VSCode)
 
+## ● MacOS ショートカット
+
 ```
-ctrl + shift + >     パンくずリストを開く
-ctrl + shift + \     対応する括弧に移動
+command + k, command + u          コメントアウト解除
+command + k, command + c          コメントアウト
+command + option + left/right     prev/next tab 分割をまたぐ
+command + option + up/down        前後にマルチカーソルつくる
+command + shift + v               markdown preview
+shift + option + up/down          clone line to up or down
+fn + up/down                      pageup, pagedown
+option + z                        toggle wordwrap
+command + k, command + left       focus to 隣のペイン
+command + cursor                  move cursor to 上下左右端
+command + shift + k               delete line
+command + K, command + S          keyboard settings
+command + P                       file search
 ```
+
+## ● Windows ショートカット
+
+```
+ctrl + shift + >                  パンくずリストを開く
+ctrl + shift + \                  対応する括弧に移動
+```
+
+あとは keyboard settings で調べればいいか。
+
+## 開いているファイルのパス表示バー（パンくずリスト）を消す
+- 設定を開く（ctrl + ,）
+- breadcrumbs で探して、disable にする
 
 ## whitespace タブ スペースの可視化
 - 拡張機能 whitespace+

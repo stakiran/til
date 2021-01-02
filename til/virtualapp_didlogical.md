@@ -7,3 +7,10 @@
 [「virtualapp / didlogical」とは何ですか？](https://qastack.jp/superuser/234537/what-is-virtualappdidlogical)
 
 > Virtualapp / Didlogicalは、Windows Live製品のいずれかを使用するときに保存される資格情報です。これには、Windows Live Messenger、Windows Live Mail、Windows Live Sign-In Assisstant、Windows XP Mode、およびその他のMicrosoftサービスが含まれます。
+
+diary:
+
+- 2020/12/27 消した
+    - 2つとも消せば復活しない
+    - インストール済の office も問題なく使える
+    - 結局いつ入ったのかは不明（Live 使った覚えない

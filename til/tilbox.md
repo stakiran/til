@@ -6,22 +6,13 @@ control + a/e       行頭/行末
 テキスト入力が死ぬほどはかどるMacショートカットキー15個
 https://www.find-job.net/startup/mac-shortcut
 
-## ●vscode recent shortcuts
-command + k, command + u          コメントアウト解除
-command + k, command + c          コメントアウト
-command + option + left/right     prev/next tab 分割をまたぐ
-command + option + up/down        前後にマルチカーソルつくる
-command + shift + v               markdown preview
-shift + option + up/down          clone line to up or down
-fn + up/down                      pageup, pagedown
-option + z                        toggle wordwrap
-command + k, command + left       focus to 隣のペイン
-command + cursor                  move cursor to 上下左右端
-command + shift + k               delete line
-command + K, command + S          keyboard settings
-command + P                       file search
+## macos で GUI アプリをターミナルから開く
+- `open -a` でアプリ名を指定
+- アプリ名はアプリケーションフォルダ内のファイル名（とか Alfred から見えるやつ）
 
-あとは keyboard settings で調べればいいか。
+```
+alias drawio="open -a 'draw.io.app'"
+```
 
 ## linux using port 調べる
 一覧
