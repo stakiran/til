@@ -1,10 +1,15 @@
 # ssh
 
-## 秘密鍵から公開鍵を調べる get public key from private key
-ssh-keygen -t
+## ●ssh-keygen
+passphrase 無し、確認も略してつくる。
 
-これで秘密鍵ファイルのパス促されるので、入力したら、公開鍵が表示される。
+ssh-keygen -t rsa -f ./keypair-user1 -q -N ""
 
+## ssh キーペア 鍵 ログイン
+ssh user1@192.168.1.1 -i ../keypair-user1
+
+## ssh 基本的なコマンドライン
+ssh -p 22 -l ec2-user -i ~/.ssh/id_rsa 192.168.1.1
 ## ssh 指定ユーザーでの公開鍵ログインをするまで
 ログインに対応したいサーバーにログインして
 
@@ -30,13 +35,3 @@ vi .ssh/authorized_keys
 (.pub の内容を貼り付ける)
 ```
 
-## ssh-keygen
-passphrase 無し、確認も略してつくる。
-
-ssh-keygen -t rsa -f ./keypair-user1 -q -N ""
-
-## ssh キーペア 鍵 ログイン
-ssh user1@192.168.1.1 -i ../keypair-user1
-
-## ssh 基本的なコマンドライン
-ssh -p 22 -l ec2-user -i ~/.ssh/id_rsa 192.168.1.1

@@ -1,5 +1,13 @@
 # AWS CLI aws configure と環境変数
 
+## aws configure に profile をつくる
+セクションの書き方が違う
+
+- config では `[profile MYPROF]` のように書く
+- credentials では `[MYPROF]` のように書く(`profile `が要らない)
+
+まあ `aws configure --profile MYPROF` などでつくるのが確実か
+
 ## aws configure と environment variable 環境変数の違い
 [Environment Variables To Configure the AWS CLI - AWS Command Line Interface](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html)
 

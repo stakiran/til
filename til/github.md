@@ -1,5 +1,44 @@
 # GitHub
 
+## 新しいアカウントつくって SSH 認証する on Windows
+`C:\Program Files\Git\etc\ssh\ssh_config` に設定を書く
+
+- ポートは 22 SSH が使えるならそれを
+- ダメなら 443 HTTPS で
+- 所属組織次第
+
+```
+Host github.com
+ User git
+ Hostname ssh.github.com
+ Port 443
+ IdentityFile (秘密鍵ファイルのWindowsフルパス)
+ ProxyCommand connect.exe -H (PROXYのIP):(同左PORT) %h %p
+```
+
+たしかめる
+
+```
+$ where ssh
+C:\Windows\System32\OpenSSH\ssh.exe
+C:\Program Files\Git\usr\bin\ssh.exe ★git時はこっちが使われるので注意
+
+$ "C:\Program Files\Git\usr\bin\ssh.exe" -T git@github.com
+……
+hi (あなたの名前)! You've successfully authenticated, ...
+```
+
+GitHub で確認
+
+```
+$ git clone git@github.com:(あなたのGitHubユーザー名)/(リポジトリ名).git
+
+$ git config --local user.email "(ID)+(USERNAME)@users.noreply.github.com" & git config --local user.name "(あなたの表示名)"
+★事前に https://github.com/settings/emails から private e-mail をコピーする
+
+$ (pushまで成功したらok)
+```
+
 ## wincred on Windows で HTTPS 認証を再登録する
 探して消す。
 

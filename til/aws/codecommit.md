@@ -1,5 +1,49 @@
 # AWS CodeCommit
 
+## 複数の AWS アカウントの CodeCommit を使い分けて clone する
+AWS アカウント1, 2 があるとする
+
+1: ~/.aws/config やら credentials やら
+
+- 1 と 2 の ca_bandle, access key, secret key などを定義する
+- default と profile2 とか
+- あるいは profile1 と profile2 とか
+
+2: gitconfig の共通設定(以下は東京リージョン)
+
+```
+[credential "https://git-codecommit.ap-northeast-1.amazonaws.com/"]
+	helper = !aws codecommit credential-helper $@
+	UseHttpPath = true
+```
+
+問題は **この helper 指定時にもプロファイル指定が必要なこと。どうやって切り替えるか**。
+
+3: たとえば alauncher でエイリアスつくる。
+
+```ini
+[codecommit_PROF1]
+rawbin=git config --global credential.https://git-codecommit.ap-northeast-1.amazonaws.com/.helper "!aws --profile PROF1 codecommit credential-helper $@"
+
+[codecommit_]
+rawbin=git config --global credential.https://git-codecommit.ap-northeast-1.amazonaws.com/.helper "!aws codecommit credential-helper $@"
+```
+
+すると `codecommit_PROF1` コマンドを実行して、PROF1 側の helper が使える。
+
+参考: [Using Git with AWS CodeCommit Across Multiple AWS Accounts | AWS DevOps Blog](https://aws.amazon.com/jp/blogs/devops/using-git-with-aws-codecommit-across-multiple-aws-accounts/)
+
+- local の gitconfig で使い分ける案（だがこれだと最初の clone ができぬ）
+
+## codecommit からの clone が repository not found でしくじる
+どれか
+
+- 期限切れの認証キャッシュ残ってる
+- credential helper が正しくない(AWS configure のプロファイル指定が違うとか)
+- そもそも権限ない
+
+`set GIT_CURL_VERBOSE=1` でログ出すとわかる。
+
 ## codecommit 403 対策 cmdkey 削除
 以下 kill_cmdkey.bat をつくって、タスクスケジューラから 15 分単位実行で登録。
 

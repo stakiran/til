@@ -1,5 +1,12 @@
 # Python
 
+## unixtime to datetime
+
+```py
+def create_datetime_from_unixtime(number):
+    return datetime.datetime.fromtimestamp(number)
+```
+
 ## json alias, loads dumps kwargs
 
 ```
