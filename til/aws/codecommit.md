@@ -52,9 +52,8 @@ rawbin=git config --global credential.https://git-codecommit.ap-northeast-1.amaz
 setlocal
 set cmdbody=cmdkey /delete:LegacyGeneric:target=git:https://(YourDevAccount-AccessKey)@git-codecommit.ap-northeast-1.amazonaws.com/v1/repos
 
-%cmdbody%/selflearn-infra
-%cmdbody%/selflearn-userstack
-%cmdbody%/selflearn-startup
+%cmdbody%/repo1
+%cmdbody%/repo2
 
 exit /b
 ```
