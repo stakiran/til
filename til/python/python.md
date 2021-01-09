@@ -1,5 +1,17 @@
 # Python
 
+## 端から指定文字列を消したい場合は strip 系はダメ
+- strip, lstrip, rstrip は文字単位で探して消す挙動
+- lstrip('abc')
+    - :x: abc を探して消す
+    - :o: a を探して消す、bを探して消す……
+- ゆえに意図した結果にならない
+- 意図した結果がしたいなら、replace('abc') を
+    - まあ abc が端以外にも含まれてたら詰むが
+    - そこは適当に工夫して
+
+[今まで勘違いしていたPythonの.strip(), .lstrip(), .rstrip() - Qiita](https://qiita.com/github-nakasho/items/aef2f3b0024f97a1e216)
+
 ## unixtime to datetime
 
 ```py

@@ -1,5 +1,15 @@
 # Google Chrome
 
+## プロキシ設定 proxy.pac
+- Windows のシステム設定に飛ばされる
+- Chrome のリロード仕様
+    - 再起動不要
+    - Win10 システム設定側変えたら、即時適用される
+    - たぶん url 解釈するたびに見てる
+- Win10 での仕様
+    - ローカルファイルは読み取りできない
+    - [ファイルプロトコルによって参照されている PAC ファイルを読み取ることができません - Browsers | Microsoft Docs](https://docs.microsoft.com/ja-jp/troubleshoot/browsers/cannot-read-pac-file)
+
 ## テキストエンコーディング変更
 - デフォではない
 - https://chrome.google.com/webstore/detail/charset/oenllhgkiiljibhfagbfogdbchhdchml/

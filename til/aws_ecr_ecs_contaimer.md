@@ -1,20 +1,67 @@
 # AWS ECR ECS container
 
-## ECR と RCS
-- ECR …… Elastic Container Registory
-- ECS …… Elastic Container Service
+## 基礎用語整理
+そもそもプレーンを理解する
 
-## ECR
-- ECS Cluster …… コンテナインスタンスの集合体
-- Container Instance
-    - フルマネージドな Fargate
-    - 自分で頑張る EC2
-- ECS Task …… 設計図
-    - どんなコンテナをどんなスペックで起動するか
-    - use Fragate? EC2?
-    - 使うコンテナ
-        - ECR の image uri を指定
-- ECR Service …… クラスタ上で起動するタスク数を管理
-    - k8sで言えば Task が Pod で、Service が Deployment みたいなもの？
+- Data plane …… コンテナが動く場所
+    - Fargate or EC2
+- Control plane …… コンテナを管理する場所
+    - ECS or EKS
 
-[CircleCI + GitHub + Amazon Elastic Container Registry (Amazon ECR) + Amazon Elastic Container Service (Amazon ECS) (+ AWS Fargate) で継続的デリバリー環境を構成する | SEEDS Creators' Blog | 株式会社シーズ](https://www.seeds-std.co.jp/blog/creators/2019-09-11-201930/)
+ESC
+
+- Elastic Container Service
+
+ECR
+
+- Elastic Container Registory
+- コンテナイメージのレジストリ
+
+Fargate
+
+- EC2 部分を隠蔽するデータプレーンサービス
+- EC2 を意識する必要がなくなる(マネコンにもEC2インスタンスが現れない)
+- Q: お高い？
+    - yes
+- Q: Lambda との違いは？
+    - まあサーバーレスとフルマネコンテナの違い
+    - 一般的に軽い処理なら lambda、それ以上なら fargate
+    - see: [Fargate VS Lambda 両者の違いをスタートアップCTOが本気で考えてみた！ | Ragate ブログ](https://www.ragate.co.jp/blog/articles/1566)
+
+EKC
+
+- AWS フルマネの k8s
+
+Task Definition と service
+
+- 1 つ以上の Container Config
+- Container Config の例
+    - どの docker image を使うか
+    - どのポートを晒すか
+    - cpu やメモリ
+    - ログ記録方法
+    - 環境変数
+- この定義をインスタンス化すると service になる
+
+cluster と instance
+
+- Cluster
+    - ECS Container Instance(DockerやAgentを持ったEC2)
+    - ECS Container Instance(DockerやAgentを持ったEC2)
+
+service と task と container
+
+- service
+    - task
+    - task
+        - container
+        - container
+
+cluster と service
+
+- service に含まれる task は、**複数の instance にまたがって配置＆実行される**
+
+参考:
+
+- [amazon ecs - What is the difference between a task and a service in AWS ECS? - Stack Overflow](https://stackoverflow.com/questions/42960678/what-is-the-difference-between-a-task-and-a-service-in-aws-ecs)
+- [AWS コンテナサービス「Fargate」「ECS」「EKS」の違いを解説 - サーバー構築と設定 ～初心者にも分かりやすく解説～](https://xn--o9j8h1c9hb5756dt0ua226amc1a.com/?p=2025)
