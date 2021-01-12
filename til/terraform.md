@@ -1,5 +1,31 @@
 # Terraform
 
+## lifecycle is 何？
+- [Terraformでテンプレートのアップデート時に特定のリソースの変更を適用しない方法 | Developers.IO](https://dev.classmethod.jp/articles/terraform_ignore_changes/)
+- [The lifecycle Meta-Argument - Configuration Language - Terraform by HashiCorp](https://www.terraform.io/docs/configuration/meta-arguments/lifecycle.html)
+
+ソース変更時のリソース変更挙動を指定できる
+
+- 毎回消す
+- 削除を防ぐ
+- 無視する
+    - >実際のリソースとTerraform管理下のリソースの差分があった際、指定したリソースの変更が無視される様になります。
+    - list of string
+
+### ignore_changes の例
+
+```tf
+resource "aws_instance" "inst1" {
+  ……
+  security_groups = ["aws_security_group.sg1.id", "aws_security_group.sg2.id"]
+  ……
+
+  lifecycle {
+    ignore_changes = ["security_groups"]
+  }
+}
+```
+
 ## tf plan -var-file は複数並べられる
 
 ## リソース一覧が見たい、など tf に定義されたのを列挙したい場合
