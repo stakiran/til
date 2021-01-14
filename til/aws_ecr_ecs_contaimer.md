@@ -8,7 +8,7 @@
 - Control plane …… コンテナを管理する場所
     - ECS or EKS
 
-ESC
+ECS
 
 - Elastic Container Service
 
@@ -48,6 +48,8 @@ cluster と instance
 - Cluster
     - ECS Container Instance(DockerやAgentを持ったEC2)
     - ECS Container Instance(DockerやAgentを持ったEC2)
+        - task
+        - task
 
 service と task と container
 
