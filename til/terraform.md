@@ -1,5 +1,78 @@
 # Terraform
 
+## -target オプション
+```
+$ tf plan -var-file=path/to/xxxx.tfbvars -target=resoucetype.resourcename
+```
+
+- 指定したリソースに対して plan を実施できる
+- 指定したリソースから参照されているリソースがあれば、その定義も走査される
+- `-target` は複数指定も可能
+
+使いどころ
+
+- plan 全体だと error warning が多いが、target なら絞って確認しやすい
+- 常用はしないこと
+    - 小さな構成に分割して、各々で tf plan できるようにするべき
+
+## 0.12 にしてから warning 多すぎるのだがなんとかならないか？
+- (n warnings) ← これの短縮表示しかありません
+- ただし 0.14 だと fmt である程度自動修正できます
+
+====
+
+- tf plan の option としては見当たらない。
+- [Any way to disable new deprecation warnings? - Terraform - HashiCorp Discuss](https://discuss.hashicorp.com/t/any-way-to-disable-new-deprecation-warnings/3999)
+    - 「ver 0.12 になってから warning 増えすぎて鬱陶しいんだが」的なこと言うてる
+- [Consolidate repetitive warning messages by apparentlymart · Pull Request #23425 · hashicorp/terraform](https://github.com/hashicorp/terraform/pull/23425)
+    - 「暫定処置として、たとえば 200 個のメッセージが出たら 1 個出す + 198warnings、みたいな表示で対応します」と言ってる
+    - merge されてる
+    - v 0.12.29 では既にある
+- [Flag or env var for quieting syntax deprecation warnings · Issue #23406 · hashicorp/terraform](https://github.com/hashicorp/terraform/issues/23406)
+    - ちょっと楽できる個人ツール（terraform公式ではない）つくった
+        - https://github.com/apparentlymart/terraform-clean-syntax
+        - `"${aaa}"` を `aaa` にする ← こういう修正を自動でやってくれる
+        - でも 0.14 で terraform fmt に組み込まれた
+
+### tf14 fmt で ok
+軽く確認した限り、以下を是正してくれる。
+
+- 0.11 時代の古い表記
+    - `${aaa}` → `aaa`
+- そもそも行儀悪い書き方
+    - `type = map` → `type = map(any)`
+
+### X terraform-clean-syntax 使ってみる
+$ go get github.com/apparentlymart/terraform-clean-syntax
+
+cannot find package がでて、もう古い感じ。
+
+素直に 0.14 の fmt 使うしかなさそう。0.14 fmt で warning 消した後、0.12 を使うみたいな。
+
+alauncher
+
+```ini
+[terraform]
+rawbin=%bin1%\terraform\0.12.29\terraform.exe %*
+alias=tf
+prm=%*
+
+[terraform_v11]
+rawbin=%bin1%\terraform\0.11.14\terraform.exe %*
+prm=%*
+alias=tf11
+
+[terraform_v12]
+rawbin=%bin1%\terraform\0.12.29\terraform.exe %*
+prm=%*
+alias=tf12
+
+[terraform_v14]
+rawbin=%bin1%\terraform\0.14.5\terraform.exe %*
+prm=%*
+alias=tf14
+```
+
 ## lookup?
 https://www.terraform.io/docs/configuration/functions/lookup.html
 

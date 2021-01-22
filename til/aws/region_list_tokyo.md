@@ -1,4 +1,9 @@
-# AWS リージョンリスト
+# AWS region
+
+## 地図で確認したい
+https://aws.amazon.com/jp/about-aws/global-infrastructure/
+
+## リージョンリスト
 
 ```
 ap-northeast-1

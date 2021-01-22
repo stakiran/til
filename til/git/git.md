@@ -49,6 +49,45 @@ git merge origin master
 
 master を更新して、bra1 に移って master をマージするだけだが、origin が必要（なんで？）。
 
+## ==
+
+## 改行コードの違いだけで差分になって git status 出ているけど、どうすればいい？
+- そのままコミットすればいい
+- git が差分吸収してくれる
+    - 新規コミットにせずに対処してくれる
+
+## コミットログの username や email を書き換える
+まとめ:
+
+- local repo または一人用 repo ならお好きにどうぞ
+- 複数人 repo の場合はやめた方がいい
+    - commit filter で該当箇所だけ書き換えても、全部のコミットの情報書き換えちゃうので
+    - つまり push -f が事実上必須
+
+なんか `rebase -i` とか使えば個別に直せるらしいが、まだ試してない。
+
+コード:
+
+- Windows の場合、xxx.sh に書いてから `sh ./xxx.sh` などを実行する
+    - 要 Git For windows
+    - `C:\Program Files\Git\usr\bin\sh.exe` が使われてる
+
+```sh
+git filter-branch --commit-filter '
+        if [ "$GIT_AUTHOR_EMAIL" = "schacon@localhost" ];
+        then
+                GIT_AUTHOR_NAME="Scott Chacon";
+                GIT_AUTHOR_EMAIL="schacon@example.com";
+                git commit-tree "$@";
+        else
+                git commit-tree "$@";
+        fi' HEAD
+```
+
+> コミットにはその親の SHA-1 値が含まれるので、このコマンドは (マッチするメールアドレスが存在するものだけではなく) すべてのコミットを書き換えます。
+
+see: [Git - 歴史の書き換え](https://git-scm.com/book/ja/v2/Git-%E3%81%AE%E3%81%95%E3%81%BE%E3%81%96%E3%81%BE%E3%81%AA%E3%83%84%E3%83%BC%E3%83%AB-%E6%AD%B4%E5%8F%B2%E3%81%AE%E6%9B%B8%E3%81%8D%E6%8F%9B%E3%81%88)
+
 ## リモートにあるブランチをローカルでマージしたい
 
 ```

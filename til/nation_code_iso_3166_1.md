@@ -8,3 +8,5 @@
 > マカオ	Macau	446	MAC	MO
 > 
 > グリーンランド	Greenland	304	GRL	GL
+> 
+> タイ	Thailand	764	THA	TH
