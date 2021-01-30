@@ -1,5 +1,61 @@
 # Terraform
 
+## Missing resource instance key エラー
+何を言っている？
+
+- argument に指定している data.xxxx が count で定義されている
+- このままだと、xxxx 側の count の値によって xxxx があったりなかったりする
+- argument 側が一意に定まらない
+- 定まるようにしなさい
+
+どうすれば
+
+- エラーメッセージに書いてあるけど、`data.xxxx[count.index]` みたいにする
+- つまり xxxx 側の count の値を反映した形の参照をうまく指定してやる
+
+## 条件に応じてリソースを作成する・しない ifdef みたいなやつ
+- count meta-argument を使う
+    - count=0 のときはリソースが作成されない
+- 条件分岐は三項演算子で書ける
+
+```tf
+resource "type" "name" {
+    count = var.region == "ap-northeast-1" ? 1 : 0
+    ...
+}
+```
+
+locals を使えばもうちょっとリーダブルにできる
+
+```
+locals {
+  use_only_in_tokyo = var.region == "ap-northeast-1" ? 1 : 0
+}
+
+resource "type" "name" {
+    count = local.use_only_in_tokyo
+    ...
+}
+```
+
+## local と input variable の違い
+Ans: 上書きできるかどうか
+
+- input は -var-file など他手段で上書きできる
+    - 未指定時に tf plan/apply すると enter a value が出るとか
+- local はできない
+
+使い分けは？
+
+- > 意図しない値の設定を防ぐためにもtfファイル上で変数を扱う際はまずLocal Valuesを利用し、外部から値の入力が必要な場合のみvariableを利用するのがオススメ
+- [【モダンTerraform】VariableとLocal Valuesの使い分けについて - febc技術メモ](https://febc-yamamoto.hatenablog.jp/entry/2018/01/30/185416)
+
+勘違いしたところ
+
+- local というと「ファイル中でしか有効にならない」「main.tf に local variable 定義したら、他のファイルからは locals.xxx で見れない？」というイメージ
+- 違います
+- あえていうなら **外部から上書きできない input variable** みたいなもん
+
 ## -target オプション
 ```
 $ tf plan -var-file=path/to/xxxx.tfbvars -target=resoucetype.resourcename

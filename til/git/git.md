@@ -51,6 +51,79 @@ master を更新して、bra1 に移って master をマージするだけだが
 
 ## ==
 
+## git log で日本語が文字化けする
+less の文字コードみたい
+
+```
+$ set LESSCHARSET=utf-8
+```
+
+## コミットログをキレイにする
+- git rebase -i
+- わからない場合は適当に新規に repo つくって、そこで試してみる
+- コミットの歴史を書き換えるので、他人も使ってる remote branch には push しない
+- Q: 実際運用するときはどんな感じになる？
+    - local branch でガシガシコミットする
+    - (このとき push はしない)
+    - 落ち着いたら、git rebase -i でコミットを整理
+    - 整理できたら、push する
+    - :rabbit: **ガシガシも全部 remote に置いて見せたい！的な発想は捨てましょう**
+- Q: でもそのコードに至った過程とか残したいじゃない？
+    - そこはチーム次第
+        - 「fix typo みたいなくだらないものは消して」かもしれないし
+        - 「いや過程とかいいから数コミットくらいでまとめてくれ」かもしれないし
+
+```
+$ git log --oneline
+コミットを確認する
+```
+
+```
+$ git rebase -i (CommitID)
+latestから指定コミットまでの範囲について、
+コミットをいじるモードに入る
+```
+
+いじるモードのファイル
+
+- oneline 形式で、**古いコミットから** ずらりと並ぶ
+- 書き方は普通にコメントで書いてあるのでそえｒを
+
+隣接する2つのコミットをまとめたい場合
+
+- fixupを使う
+    - 自分を、一つ上のコミットにまとめる
+    - コミットメッセージは、一つ上の方をそのまま使う
+- before
+    - pick xxxxxxx commit1
+    - fixup yyyyyyy commit2
+    - pick zzzzzzz commit3
+- after
+    - pick xxxxxxx commit1 ★ここにcommit2の変更も入っている
+    - pick zzzzzzz commit3
+
+隣接するnつのコミットをまとめたい場合(fixupはfでもいける)
+
+- before
+    - pick xxxxxxx commit1
+    - f yyyyyyy commit2
+    - f zzzzzzz commit3
+- after
+    - pick xxxxxxx commit1 ★ここにcommit2とcommit3の変更も入っている
+
+see:
+
+- [あのコミットをなかった事に。git rebase -i の使い方 - karakaram-blog](https://www.karakaram.com/git-rebase-i-usage/)
+
+## gitconfig の layer
+- 1 system
+    - `(Gitインストール先)\etc\.gitconfig`
+- 2 global
+    - `%userprofile%\.gitconfig`
+- 3 local
+
+global に書いたのに反映されない場合、system 側を見る。
+
 ## 改行コードの違いだけで差分になって git status 出ているけど、どうすればいい？
 - そのままコミットすればいい
 - git が差分吸収してくれる

@@ -231,27 +231,16 @@ import {options} from "@/options.js";
 ## `increment({ commit }){ commit('increment')}` ← 引数の `{}` 囲みはなんですか
 ES2015 の引数分割束縛
 
-- 以下を二つとも満たす
-    - 1 関数 f の定義時に引数 param を `{param}` と書く
-    - 2 呼び出し元では、f に「param を持つオブジェクト obj1」を与える
-- すると、f の内部では param の部分が obj1.param と補われる
+- `f({param})` とは
+    - `f` の第一引数に渡された `xxx` のうち、`param` だけを取り出している
+    - xxx のうち、param だけを使いたい場合に便利
 
-つまり obj1.param obj1.param obj1.param と何度も書くところが、param だけで済む。
+- 普通
+    - `f(xxx){……xxx.param……}`
+- 引数分割束縛
+    - `f({param}){……param……}`
 
-読み方としては、`f({param})` は、**fの第一引数に渡されたxxxのうち、param プロパティについては、関数内で xxx. を省略できまっせ** ← こんなイメージ。
-
-```
-// caller
-
-increment(context)
-
-===
-
-// callee
-increment ({ commit }) {
-  commit('increment')
-}
-```
+see:
 
 - [ES2015 の引数分割束縛（argument destructuring）とは？ | 世界を変える男-やまだたろう-](https://sekaiokaeru.com/tips/javascript-argument-destructuring)
     - この記事がわかりやすかった

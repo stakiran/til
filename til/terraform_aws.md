@@ -1,42 +1,20 @@
 # Terraform AWS provider
 
-## ●AWSノウハウ
-一部一般ノウハウもあるがいったんここに
+## apply 先のリージョンはどこで指定する？
+Ans: provider
 
-### リソース固有
-- lifecycle で ignore_changes するケースとか
-- ...
+> region - (Optional) This is the AWS region. It must be provided, but it can also be sourced from the AWS_DEFAULT_REGION environment variables, or via a shared credentials file if profile is specified.
 
-### 共通や初期
-- gitignore
-    - giho で
-- backend s3
-    - ビルド時に動的に terraform.tf につくるようにする
-    - key に account, region, env などを含めておくと一意のパスになる
-- 1ファイルに集約した方が良いもの
-    - 各種インスタンスやタスクを載せるために必要な土台部分とか
-        - vpc, subnets, route, eip, sg
-    - 順序関係なく独立して定義しておける、他のリソースから参照されるリソースとか
-        - s3 bucket
-        - secret系
-        - cloudwatch
-- テンプレート化しておくもの
-    - task definition
-    - iam policy
-    - userdata script
-- 特定の環境に注入する場合、main.tf にて data で注入先情報をゲットする
-- AWS リソースにはできるだけタグをつけておく
-    - 特に Name タグ
-    - なんだかんだマネコンから探して確認する機会は多い
-    - 直感的にフィルターできる名前体系を考えておく
-    - `tags = {...}` をコピペではなく共通的につくるにはどうしたらいいんだろう
-        - custom function はないし
-        - [terraform.md](terraform.md) 見て
-- 説明コメントは書かない
-    - 英語文章に全部日本語訳を書く、みたいなことはしない
-    - 同様に tf コードにもいちいち説明コメントは書かない
-    - tf コードをスラスラ読めるようになれ
-    - (?) 設定根拠どう書けばいいんだろ
+指定必須とある
+
+- Q: え？us-east-1にログインした状態でも、別リージョンにリソースつくれるってこと？
+    - Ans: yes
+    - というか「どのリージョンにログインしているか」は関係ないです
+    - たとえばローカルで terraform 叩くこともあるでしょ
+    - 当たり前
+    - ~~よくわからん悩み方してるな~~
+
+see: [Docs overview | hashicorp/aws | Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 
 ## aws_alb と aws_lb の違いは？
 - aws_alb は aws_lb のエイリアス

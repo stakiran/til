@@ -1,5 +1,23 @@
 # Python
 
+## パスワードをつくるセキュリティ用乱数モジュール
+- secrets モジュールを使う
+- random はセキュリティゆるいので使わない
+- 文字列候補は string モジュールの定義を拝借すると楽
+
+```py
+import secrets
+
+using_chars = '{}{}'.format(
+    string.ascii_letters,
+    string.digits,
+)
+def generate_password(length):
+    ls = [secrets.choice(using_chars) for _ in range(length)]
+    s = ''.join(ls)
+    return s
+```
+
 ## 端から指定文字列を消したい場合は strip 系はダメ
 - strip, lstrip, rstrip は文字単位で探して消す挙動
 - lstrip('abc')

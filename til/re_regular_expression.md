@@ -1,5 +1,11 @@
 # 正規表現
 
+## terraform の data 一覧を手に入れる文脈
+data.xxx.yyy.…… から data.xxx.yyy のみにする
+
+- from `data\.([\d\c\-]+)\.([\d\c\-]+)\.(.*)`
+- to `data.\1.\2`
+
 ## 2space indent リストを 4space にする
 数字大きい方から調べていく。
 
