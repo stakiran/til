@@ -9,6 +9,7 @@
     - variable でクッション置いてもいいし、locals でラップした xxxx.tf をつくってもバチ当たらない
 - モジュール……
 - plan test とか
+- autoscaling で新旧コンテナ入れ替えるやつとか
 
 ## ●CI/CD は「git clone するだけで動作する」ようにする
 - たとえば Jenkins も jenkinsfile で pipeline 流せるようになっている

@@ -1,5 +1,20 @@
 # ConEmu
 
+## 複数タブを一気に開くコマンドライン
+- 「前回終了時のタブ状態を復元する」みたいなことができない
+- 発想を変えて、一気に開くコマンドラインを用意しておく
+
+```
+@echo off
+
+setlocal
+set bin="C:\Program Files\ConEmu\ConEmu64.exe" -Single
+
+start "" %bin% -Dir "D:\work\github\stakiran\abc" -cmd cmd /k "title abc && cd"
+start "" %bin% -Dir "D:\work\github\stakiran\def" -cmd cmd /k "title def && cd"
+start "" %bin% -Dir "D:\work\github\stakiran\ghi" -cmd cmd /k "title ghi && cd"
+```
+
 ## ConEmu のキーボードショートカット設定時の注意点
 - **あらかじめ用意されてる操作に対して**、何らかのキーを割り当てる(operation first)という形
     - あるキーに対して、ある操作を割り当てる（key first）ではない

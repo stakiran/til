@@ -1,5 +1,23 @@
 # Terraform
 
+## terraform graph
+```
+$ terraform graph | dot -Tsvg > graph.svg
+```
+
+- Graphviz の dot.exe の PATH 通しておく必要あり
+
+## terraform import is 何
+- `terraform import (path_to_resource) (path_to_realworld_resource)`
+- 既存リソースを、path to resource で指定した名前で、tfstate に追加する
+- tfstate に書くだけで、tfファイルは更新されない（ので手動で記述する必要がある）
+    - plan を繰り返して「うん、差分なくなったね」までたどり着くゲー
+
+わからん:
+
+- realworldの方の文法
+    - terraform path だったり、AWS 側の resource id だったり、IAMリソース系は arn だったり、route53では zoneid だったりするんだけど
+
 ## Missing resource instance key エラー
 何を言っている？
 

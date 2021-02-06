@@ -1,6 +1,55 @@
 # Git
 
-## ●ブランチつくって push するまで
+## ●merge マージ
+マージされる側に checkout する。つまり merge とは merge from の意
+
+```
+git checkout master
+git merge branch1
+```
+
+別の覚え方として、**今チェックアウトしているブランチが操作される** でもいい。マージする場合、操作されるのはマージされる側だから、merge は merge from なのだと自明になる。
+
+### master の最新内容を開発ブランチ bra1 にマージしたい
+
+```
+git co master
+git pull origin master
+git co bra1
+git merge origin master
+```
+
+master を更新して、bra1 に移って master をマージするだけだが、origin が必要（なんで？）。
+
+### PR 時に出てる Conflict の解消
+GitHub で案内出てるからそれに従えばよいが
+
+step1 として、master 側の更新を取り込んでから conflict を解消する。
+
+```
+git fetch origin
+git checkout -b bra1 origin/bra1
+git merge master
+```
+
+終わったら、step2 として master 側にマージする。
+
+```
+git checkout master
+git merge --no-ff bra1
+git push origin master
+```
+
+- `--no-ff`？
+    - fast-forward マージさせないオプション
+    - merge to master 時は、極力これでマージするのが推奨されている
+    - fast-forward だと（マージ用のコミットをつくらないので）更新追いかけづらい
+        - merge 元である bra1 側と比較して見比べるとか調べるとかしづらい
+    - see: [gitのmerge --no-ff のススメ - Qiita](https://qiita.com/nog/items/c79469afbf3e632f10a1)
+
+## ==
+
+## ブランチつくって push するまで
 branch でローカルにつくる
 
 checkout で切り替える
@@ -27,29 +76,6 @@ Total 0 (delta 0), reused 0 (delta 0)
 To https://...
  * [new branch]      develop_xxx -> develop_xxx
 ```
-
-## ●merge マージ
-マージされる側に checkout する。つまり merge とは merge from の意
-
-```
-git checkout master
-git merge branch1
-```
-
-別の覚え方として、**今チェックアウトしているブランチが操作される** でもいい。マージする場合、操作されるのはマージされる側だから、merge は merge from なのだと自明になる。
-
-### master の最新内容を開発ブランチ bra1 にマージしたい
-
-```
-git co master
-git pull origin master
-git co bra1
-git merge origin master
-```
-
-master を更新して、bra1 に移って master をマージするだけだが、origin が必要（なんで？）。
-
-## ==
 
 ## git log で日本語が文字化けする
 less の文字コードみたい
