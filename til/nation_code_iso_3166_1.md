@@ -10,3 +10,5 @@
 > グリーンランド	Greenland	304	GRL	GL
 > 
 > タイ	Thailand	764	THA	TH
+> 
+> 大韓民国	Korea, Republic of	410	KOR	KR

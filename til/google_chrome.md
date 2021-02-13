@@ -65,7 +65,7 @@
     - [miniGestures - Chrome ウェブストア](https://chrome.google.com/webstore/detail/minigestures/apnjnepphihnjahpbfjiebcnpgmjnhfp?hl=ja)
     - 設定画面から L と R を割り当てる
 
-## chrome データバックアップ
+## chrome データバックアップとリストア
 - そもそも Google アカウント使ってクラウドに保存せい、が基本スタンス
     - [How to Backup Google Chrome: A Guide for 2020](https://www.cloudwards.net/backup-google-chrome/)
 - ローカルでやるなら以下をまるごと
@@ -75,6 +75,12 @@
         - Default のうち、Service Worker と Cache はキャッシュなので最悪なしでもok
         - Extensions もファイル数でかい（jsフルセットの過去バージョン全部保持で 19000 ファイルとか）ことがあるのでなしでok
     - 試したばかりの現時点で 500MB、うち上記二つで 350 MB くらいしめてる
+
+2021/02/07 リストア試して ok
+
+- Default にまるごと上書きコピー
+    - :o: ブックマーク
+    - :x: 拡張機能
 
 ## メモリ使用量
 - 前提

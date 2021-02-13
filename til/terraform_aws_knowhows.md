@@ -11,9 +11,13 @@
 - plan test とか
 - autoscaling で新旧コンテナ入れ替えるやつとか
 
-## ●CI/CD は「git clone するだけで動作する」ようにする
-- たとえば Jenkins も jenkinsfile で pipeline 流せるようになっている
-    - ジョブとしてはソース取ってくる設定+αで良い
+## CI/CD 
+- 「git clone するだけで動作する」ようにする
+    - たとえば Jenkins も jenkinsfile で pipeline 流せるようになっている
+        - ジョブとしてはソース取ってくる設定+使うjenkinsfile設定+αで良い
+- 承認フェーズ設けたいなら、plan後に input prompt を出して止める
+    - jenkins だと `input message` とか
+    - [Pipeline: Input Step](https://www.jenkins.io/doc/pipeline/steps/pipeline-input-step/)
 
 ## module か generator か
 module

@@ -1,5 +1,13 @@
 # ConEmu
 
+## 管理者権限で開く
+- `-new_console:a`
+- `-cmd` の後につける必要がある
+
+```
+start "" %bin% -Dir "D:\work\github\stakiran_sub\abc" -cmd -new_console:a cmd /k "title abc && pp"
+```
+
 ## 複数タブを一気に開くコマンドライン
 - 「前回終了時のタブ状態を復元する」みたいなことができない
 - 発想を変えて、一気に開くコマンドラインを用意しておく
