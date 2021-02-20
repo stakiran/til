@@ -1,5 +1,60 @@
 # Terraform
 
+## 0.11 to 0.12
+基本は以下
+
+- 0.11 で tf 0.12checklist
+- remove .terraform/ dir
+- 0.12 で tf init
+- tf 0.12upgrade
+    - ここで fmt みたいにコード修正が走る
+
+その他のテクニック
+
+- data.template_file 部分で差分が出る
+    - templatefiles() 関数を使う
+- splat について
+    - `aws_subnet.xxxx.*.id` こういうやつ
+    - これ単体で list になるので、`[]` で囲む必要はない
+    - 複数の splat を並べる場合、flatten() が必要
+        - `flatten([splat1, splat2, ....])`
+
+## terraform init で 403 forbidden
+- .terraform フォルダをいったん削除してからリトライするとたぶん ok
+- plugins/ が（途中で失敗する、手作業でバイナリ置いたなど）中途半端な状態だと、init がうまく動作してくれない
+
+## provider のバージョン周り
+- ドキュメンテーション
+    - https://registry.terraform.io/providers/hashicorp/aws/2.55.0
+    - コンボボックスからバージョン選べるようになってる
+- バイナリ
+    - https://releases.hashicorp.com/terraform-provider-aws/2.55.0/
+
+## version の ~> 2.68.0 is 何
+ok
+
+- 2.68.0
+- 2.68.1
+- ...
+
+NG
+
+- 2.69.x
+
+肝
+
+- rightmost の部分のみ `>=` になる
+- `>` ではない
+
+余談
+
+- Hashicorpは、古いバージョンは x.y.0 のみ置く
+    - ある -> https://releases.hashicorp.com/terraform-provider-aws/2.55.0/
+    - ない -> https://releases.hashicorp.com/terraform-provider-aws/2.55.1/
+- これは `~> 2.55.0` でも init でインストールできる
+- このことから、`>=` だと言える
+- そもそも一般論から考えて「以上」の方が使いやすい
+
 ## terraform graph
 ```
 $ terraform graph | dot -Tsvg > graph.svg

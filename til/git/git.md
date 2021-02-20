@@ -49,6 +49,13 @@ git push origin master
 
 ## ==
 
+## git status で日本語ファイル名が文字化けする
+
+```
+[core]
+	quotepath = false
+```
+
 ## ブランチつくって push するまで
 branch でローカルにつくる
 
@@ -84,7 +91,12 @@ less の文字コードみたい
 $ set LESSCHARSET=utf-8
 ```
 
-## コミットログをキレイにする
+## git rebase ミスったのでやめたい
+git rebase --abort
+
+直近1回分の rebase をキャンセルできる。
+
+## コミットログをキレイにする git rebase -i
 - git rebase -i
 - わからない場合は適当に新規に repo つくって、そこで試してみる
 - コミットの歴史を書き換えるので、他人も使ってる remote branch には push しない
@@ -98,6 +110,10 @@ $ set LESSCHARSET=utf-8
     - そこはチーム次第
         - 「fix typo みたいなくだらないものは消して」かもしれないし
         - 「いや過程とかいいから数コミットくらいでまとめてくれ」かもしれないし
+- Q: -i (commitID) の commitID が指すコミットは破壊される？
+    - Ans: されない
+    - fとrをする限りはされない（ほかは知らない）
+    - rebase -i の実行前後で log を確認して、commitID が変わってないことを見てみればいい
 
 ```
 $ git log --oneline
