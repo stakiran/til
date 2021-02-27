@@ -19,6 +19,39 @@
     - 複数の splat を並べる場合、flatten() が必要
         - `flatten([splat1, splat2, ....])`
 
+## 0.14 fmt で "${xxx}" to xxx がされるケースとされないケース
+されないケースの例:
+
+- ブロックの中
+    - 例: aws provider の data template_file の argument `vars = {...}` など
+- xxx に変数参照と普通の文字列が混在しているとき
+    - 例: `"${var.prefix}-hogehoge-${var-suffix}"`
+
+## for_each
+- これは variable の default argument 使って直接値を定義してる例
+- each.key または each.value["VALUEKEYNAME"] で参照
+
+```tf
+variable map1 {
+  default = {
+    key1 = {
+      valuekey1 = "value1"
+      valuekey2 = "value2"
+    }
+  }
+}
+
+resource xxx yyy{
+  for_each = var.map1
+
+  argument1 = each.value["valuekey1"]
+}
+```
+
+リソース名はどうなるか
+
+- resourcetype.resourcename["key1"]
+
 ## terraform init で 403 forbidden
 - .terraform フォルダをいったん削除してからリトライするとたぶん ok
 - plugins/ が（途中で失敗する、手作業でバイナリ置いたなど）中途半端な状態だと、init がうまく動作してくれない
