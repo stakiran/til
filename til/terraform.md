@@ -1,31 +1,43 @@
 # Terraform
 
-## 0.11 to 0.12
-基本は以下
+## tfplan と tfstate
+tfplan
 
-- 0.11 で tf 0.12checklist
-- remove .terraform/ dir
-- 0.12 で tf init
-- tf 0.12upgrade
-    - ここで fmt みたいにコード修正が走る
+- バイナリファイル
+    - なので人間には読めない
+- terraform apply 時に食わせることで、（そのtfplanに書かれた内容に従った）applyができる
+    - なので plan で tfplan 吐いて、吐いたそれをそのまま apply で食わせるのが一般的
 
-その他のテクニック
+tfstate
 
-- data.template_file 部分で差分が出る
-    - templatefiles() 関数を使う
-- splat について
-    - `aws_subnet.xxxx.*.id` こういうやつ
-    - これ単体で list になるので、`[]` で囲む必要はない
-    - 複数の splat を並べる場合、flatten() が必要
-        - `flatten([splat1, splat2, ....])`
+- stateファイル
+- apply後に作成される
+- 作成先 ★ここちょっと自信ない……
+    - カレントディレクトリ
+    - if backend 指定時 then そっちにもつくる
 
-## 0.14 fmt で "${xxx}" to xxx がされるケースとされないケース
-されないケースの例:
+## for_each で each.value is object with 1 attribute "xxx" が出る
+for_each が指している変数側で、漏れなく value を定義する。
 
-- ブロックの中
-    - 例: aws provider の data template_file の argument `vars = {...}` など
-- xxx に変数参照と普通の文字列が混在しているとき
-    - 例: `"${var.prefix}-hogehoge-${var-suffix}"`
+例: attr2 を新たに追加したい場合
+
+```
+locals {
+  map1 {
+    "element1" = {
+      "attr1" = "value1"
+      "attr2" = 2 // ★呼び出し元でこれ使ってるコードを書いた場合
+    }
+    "element2" = {
+      "attr1" = "value11"
+      // ★ここ含め他のすべての要素にも attr2 を定義しなきゃいけない
+      //   してないと上記エラーが出る(xxxしか見つからないがな、と)
+    }
+    "element3" = {
+      "attr1" = "value1111"
+    }
+  }
+```
 
 ## for_each
 - これは variable の default argument 使って直接値を定義してる例
@@ -51,6 +63,33 @@ resource xxx yyy{
 リソース名はどうなるか
 
 - resourcetype.resourcename["key1"]
+
+## 0.14 fmt で "${xxx}" to xxx がされるケースとされないケース
+されないケースの例:
+
+- ブロックの中
+    - 例: aws provider の data template_file の argument `vars = {...}` など
+- xxx に変数参照と普通の文字列が混在しているとき
+    - 例: `"${var.prefix}-hogehoge-${var-suffix}"`
+
+## 0.11 to 0.12
+基本は以下
+
+- 0.11 で tf 0.12checklist
+- remove .terraform/ dir
+- 0.12 で tf init
+- tf 0.12upgrade
+    - ここで fmt みたいにコード修正が走る
+
+その他のテクニック
+
+- data.template_file 部分で差分が出る
+    - templatefiles() 関数を使う
+- splat について
+    - `aws_subnet.xxxx.*.id` こういうやつ
+    - これ単体で list になるので、`[]` で囲む必要はない
+    - 複数の splat を並べる場合、flatten() が必要
+        - `flatten([splat1, splat2, ....])`
 
 ## terraform init で 403 forbidden
 - .terraform フォルダをいったん削除してからリトライするとたぶん ok
@@ -306,13 +345,7 @@ resource "aws_instance" "inst1" {
     - state list
     - state show
     - output
-- ただし state ファイルから読み込むので、事前に state をつくっておく(planする)必要がある
-    - ★backend 使ってるときの state の挙動がわからねぇ……
-        - 1: tf plan したら remote state がもう書き換わっちゃう？
-        - 2: remote は書き換わらずに、ローカルでつくられる？ and （適用するなら）それを push する必要あり？
-        - 3: 1と2が両方起きる？
-            - つまり backend 使う場合は local tfstate を gitignore するなどの対応が実質推奨
-        - :rabbit: たぶん 3
+- ただし state ファイルから読み込むので、事前に state をつくっておく(applyする)必要がある
 
 graph コマンドだけは例外で、ローカル完結できる。
 

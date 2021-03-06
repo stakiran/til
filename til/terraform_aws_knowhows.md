@@ -11,6 +11,9 @@
 - plan test とか
 - autoscaling で新旧コンテナ入れ替えるやつとか
 - depends_on はどういうケースに書くべきか
+- main.tf にいろんな記述を混在させない
+    - variable, data, locals etc
+    - それぞれ別ファイルにした方が再利用性や自動化（自動生成）や diff がしやすくなる
 
 ## ●リソースタイプ単位のメモ
 ecs
@@ -85,6 +88,17 @@ vpc
 ……
 ```
 
+
+- その他の .tf
+    - main.tf に書くこともできるが、ファイルに分けた方がわかりやすい
+    - この場合、main.tf は provider 情報などバージョン情報だけになる
+
+```
+main.tf
+variables.tf
+locals.tf
+data.tf
+```
 
 ## CI/CD 
 - 「git clone するだけで動作する」ようにする
