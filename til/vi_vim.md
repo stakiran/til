@@ -1,12 +1,17 @@
 # Vi Vim Editor
 稀にしか使わないからいつも忘れる
 
+# 複数行インデント
+- :set shiftwidth=2
+- shift + v でライン選択
+- shift + > でインデント
+- . でさらに繰り返し
+
 # 検索
 `/キーワード`
 
-- ctrl + g で次
-- ctrl + G で前
-- Enter で確定（今合ってるキーワードにカーソルを移動）
+- n で次
+- N で前
 
 # vim 複数行コメントアウト
 入れる
@@ -27,9 +32,3 @@
 :set number
 
 :set nonumber
-
-# 複数行インデント
-- :set shiftwidth=2
-- shift + v でライン選択
-- shift + > でインデント
-- . でさらに繰り返し

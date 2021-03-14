@@ -1,5 +1,11 @@
 # Terraform AWS provider
 
+## RDS cluster instance の updated in-replace 変更を即時反映するには？
+- `apply_immediately = "true"` が必要
+    - これがないと「次のメンテナンスウィンドウに更新するよ」になる（即時じゃない）
+- また DB インスタンスは起動しっぱなしにしておく
+    - 停止していると逆に 400 エラーで失敗する
+
 ## apply 先のリージョンはどこで指定する？
 Ans: provider
 
