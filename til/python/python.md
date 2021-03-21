@@ -1,5 +1,24 @@
 # Python
 
+## csv 出力
+- 1行1要素で出力する
+- 1要素がn要素リストの場合、n列にする
+    - n=1の場合、csvモジュールがエラーを吐くので明示的に「1要素からなるリスト」にする必要がある
+
+```py
+import csv
+
+def list2csv(filepath, ls):
+    with open(filepath,  encoding='utf8', mode='w') as f:
+        writer = csv.writer(f, lineterminator='\n')
+
+        for element in ls:
+            is_not_element_list = not isinstance(element, list)
+            if is_not_element_list:
+                element = [element]
+            writer.writerow(element)
+```
+
 ## パスワードをつくるセキュリティ用乱数モジュール
 - secrets モジュールを使う
 - random はセキュリティゆるいので使わない
