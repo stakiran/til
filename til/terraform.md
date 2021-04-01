@@ -1,5 +1,18 @@
 # Terraform
 
+## local で plan したい場合のノウハウ
+- 1: 既に使われているビルドファイル等から、tf plan のコマンドラインを入手
+- 2: かんたんなコマンドで実行できるラッパーをつくる
+    - windows なら .bat つくって、path 通ってる場所に置くとか
+- 3: tf plan > stdout.stdout のように、ファイルに出す
+- 4: この stdout ファイルを VSCode で開く
+
+VSCode を使うメリット
+
+- 自動リロードされる
+- タブの一つとして扱えるので扱いやすい
+- [ANSI Colors - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=iliazeus.vscode-ansi) を使えば、ANSI の色付けもできる
+
 ## tfplan と tfstate
 tfplan
 

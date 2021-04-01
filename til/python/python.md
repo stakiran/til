@@ -1,5 +1,51 @@
 # Python
 
+## datetime YYYY-MM や YYYY-MM-DD 文字列つくる系
+
+```python
+def today_datetimeobj():
+    return datetime.datetime.today()
+
+def walked_datetimeobj(days):
+    dt = today_datetimeobj()
+    delta = datetime.timedelta(days=days)
+    dt += delta
+    return dt
+
+def datetimeobj2datestr(datetimeobj):
+    return datetimeobj.strftime('%Y-%m-%d')
+
+def yesterday_str():
+    dt = walked_datetimeobj(days=-1)
+    s = datetimeobj2datestr(dt)
+    return s
+
+def enumerate_datetimestr_in_month(datestr):
+    """ @param datestr must be YYYY-MM format.
+    - 当月1日から始めて +1 日しながら追加していく
+    - 次月になった = おしまいなので抜ける. """
+    y, m = datestr.split('-')
+    y = int(y)
+    m = int(m)
+
+    delta_1day = datetime.timedelta(days=1)
+    basedt = datetime.datetime(year=y, month=m, day=1)
+    dt = basedt
+    this_month = m
+
+    lines = []
+    while True:
+        datetimestr = datetimeobj2datestr(dt)
+        lines.append(datetimestr)
+        dt += delta_1day
+
+        is_over_this_month = dt.month != this_month
+        if is_over_this_month:
+            break
+
+    return lines
+```
+
 ## csv 出力
 - 1行1要素で出力する
 - 1要素がn要素リストの場合、n列にする
