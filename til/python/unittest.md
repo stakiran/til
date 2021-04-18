@@ -28,6 +28,13 @@ if __name__ == '__main__':
     unittest.main()
 ```
 
+## 例外を投げる
+
+```
+        with self.assertRaises(RuntimeError):
+            state.is_in_code_block()
+```
+
 ## list の assert
 assertEqual() に渡すだけでいける。
 

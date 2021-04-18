@@ -1,5 +1,16 @@
 # Python
 
+## list の指定位置に list を insert する
+- extend は list の append なので違う
+- かといってスライスをn個使って器用に入れ込む関数もつくりたくない
+- `[i:i]` でいけるの知らなかった
+
+```py
+list1[i:i] = list2
+```
+
+see: [python - How to insert multiple elements into a list? - Stack Overflow](https://stackoverflow.com/questions/39541370/how-to-insert-multiple-elements-into-a-list)
+
 ## datetime YYYY-MM や YYYY-MM-DD 文字列つくる系
 
 ```python

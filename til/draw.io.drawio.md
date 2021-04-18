@@ -30,7 +30,6 @@ for %%f in (*.drawio) do (
 ```
 
 ## コマンドライン
-
 ```
 $ draw.io.exe --help
 ```
