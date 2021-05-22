@@ -1,5 +1,10 @@
 # Mongo Shell
 
+## ●関係
+- database
+    - collection
+        - document
+
 ## ログイン
 
 ```
@@ -23,6 +28,8 @@ show collections
 use (DB名)
 db.(Collection名).find()
 ```
+
+use はデータベースの新規作成も兼ねている。
 
 ### 指定キーだけ表示する
 

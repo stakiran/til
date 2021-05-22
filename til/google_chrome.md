@@ -1,5 +1,9 @@
 # Google Chrome
 
+## 信頼済みサイト登録
+- インターネットオプション inetcpl.cpl を使う
+- Chrome そのものが設定を持っているわけではない
+
 ## プロキシ設定 proxy.pac
 - Windows のシステム設定に飛ばされる
 - Chrome のリロード仕様
