@@ -1,5 +1,18 @@
 # Jenkins
 
+# 2.46.3 の話
+
+## SCM に push されたら自動でジョブを走らせる
+jobとrepo、双方から紐付ける必要がある。
+
+ジョブ側の設定
+
+- 1: ビルド・トリガの Build when a change is pushed…… にチェックを入れる
+
+GitLab repo 側の設定
+
+- 2: Settings > Integration > Add webhook から、1: の url を追加
+
 ## 他ジョブの成果物を利用するには
 例: ジョブ1の成果物をジョブ2から利用したい場合
 
