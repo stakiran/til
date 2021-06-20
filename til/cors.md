@@ -2,6 +2,7 @@
 
 ## オリジンとは
 - domain + protcol + port
+- 特に A から B を見に行く（API使う等）ときの、A の領分を指すというニュアンスが強い
 
 ```
 domain: yahoo.co.jp
@@ -24,13 +25,13 @@ origin: https://yahoo.co.jp:443
 サーバーサイド:
 
 - 要求クライアントに対して `Access-Control-Allow-Origin` ヘッダ返すのが基本
-- 下記の Cookie 分を許可したい場合は `Access-Control-Allow-Credentials: true` も必要
+    - node.js の HTTP レスポンス返す部分で、HTTP ヘッダにこれを追加するとか
 
 クライアントサイド:
 
 - 基本的に何もしなくていい
-- cookie 渡したい場合は追加オプションが必要
-    - axios で言えば `axios.defaults.withCredentials = true` のセット
+- CDN やプロキシサーバーなど仲介が悪さしている（CORSに必要なクライアント側のHTTPヘッダを消してる）ことがあるので、チェックすると良い
+    - 例: AWS の CloudFront では、whitelist という形で明示的に指定してやらないと各種ヘッダを保持できない
 
 ## Q: XMLHttpRequest at XXXX from origin YYYY has been blocked by CORS policy って何？
 Ans: サーバーサイド XXXX は、YYYY からの別オリジンアクセスを許可してないです（or XXXX に実装したつもりでも何かミスっててちゃんと動作してない）
