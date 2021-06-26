@@ -5,3 +5,6 @@
 
 ## 過去遭遇したもの
 - 同じ名前の環境変数を 2 つ定義していた
+- aws_ecs_task_definition.volume.efs_volume_configuration.root_directory の値を `""` にしていた
+    - 内部的には `"/"` に変換されるっぽいので、常に `"/" → ""` の change が発生したとみなされてしまう
+
