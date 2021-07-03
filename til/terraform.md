@@ -1,5 +1,11 @@
 # Terraform
 
+## taint
+- 汚染フラグ
+- これをつけたリソースは、内部的に再作成される
+    - plan 時に is tainted, so must be replaced と表示される
+    - apply 時は再作成が走る
+
 ## local で plan したい場合のノウハウ
 - 1: 既に使われているビルドファイル等から、tf plan のコマンドラインを入手
 - 2: かんたんなコマンドで実行できるラッパーをつくる

@@ -203,6 +203,15 @@ git filter-branch --commit-filter '
 
 see: [Git - 歴史の書き換え](https://git-scm.com/book/ja/v2/Git-%E3%81%AE%E3%81%95%E3%81%BE%E3%81%96%E3%81%BE%E3%81%AA%E3%83%84%E3%83%BC%E3%83%AB-%E6%AD%B4%E5%8F%B2%E3%81%AE%E6%9B%B8%E3%81%8D%E6%8F%9B%E3%81%88)
 
+## web画面でマージしたブランチbraを、ローカルに取り込みたい
+
+```
+$ git pull origin bra
+```
+
+- git pull は何も指定しないと origin master になる
+- この引数2つを明示的に指定せいってこと
+
 ## リモートにあるブランチをローカルでマージしたい
 
 ```

@@ -1,5 +1,13 @@
 # Vue CLI
 
+## VUE_APP_XXXX 変数について
+- Q: vue.config.js だけじゃなくて js ファイル全般にも書ける？
+    - yes
+- Q: 定義時は VUE_APP_ prefix は必須？
+    - yes
+- Q: 参照時は process.env.VUE_APP_ prefix は必須？
+    - yes
+
 ## vue.config.js の中身が人によって違うのでバージョン管理どうすればいいっすか？
 - そもそも optional config なので必須設定を書かない
     - [Configuration Reference | Vue CLI](https://cli.vuejs.org/config/#vue-config-js)
@@ -38,6 +46,15 @@ module.exports = {
 		proxy:process.env.VUE_APP_YOUR_LOCAL_PROXYADDRESS
 	}
 }
+```
+
+以下のようなネストはできない
+
+```
+VUE_APP_VARNAME1=123
+VUE_APP_VARNAME2=VUE_APP_VARNAME1
+VUE_APP_VARNAME3=process.env.VUE_APP_VARNAME1
+VUE_APP_VARNAME4=${VUE_APP_VARNAME1}
 ```
 
 ## devServer.proxy って何？
