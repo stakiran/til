@@ -1,11 +1,5 @@
 # tilbox
 
-## ●macos text shortcuts
-control + a/e       行頭/行末
-
-テキスト入力が死ぬほどはかどるMacショートカットキー15個
-https://www.find-job.net/startup/mac-shortcut
-
 ## macos で GUI アプリをターミナルから開く
 - `open -a` でアプリ名を指定
 - アプリ名はアプリケーションフォルダ内のファイル名（とか Alfred から見えるやつ）

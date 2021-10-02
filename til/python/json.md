@@ -1,6 +1,7 @@
 # Python json
 
 ## json dumps dict to string
+
 ```
 option_jsondump = {
     'ensure_ascii' : False,

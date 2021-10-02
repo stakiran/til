@@ -1,5 +1,30 @@
 # Python
 
+## csv read
+
+```py
+def csvfile2csvobj(filepath, encoding='utf8'):
+    csv_file = open(filepath, 'r', encoding=encoding, errors='', newline='' )
+    reader = csv.reader(csv_file, delimiter=',')
+    return reader
+
+fullpath = os.path.join(rootdir, targetfilename)
+reader = csvfile2csvobj(fullpath, encoding='cp932')
+
+for i,row in enumerate(reader):
+    if i==0:
+        continue
+    code = row[1]
+    name = row[2]
+
+    not_found = not code in pj_dict
+    if not_found:
+        pj_dict[code] = {}
+    cur = pj_dict[code]
+    cur['name'] = name
+
+```
+
 ## list の指定位置に list を insert する
 - extend は list の append なので違う
 - かといってスライスをn個使って器用に入れ込む関数もつくりたくない
@@ -238,6 +263,30 @@ d = {
 }
 s = '{0[k1]} {0[k2]:05d}'.format(d)
 print(s)
+```
+
+## dict の sort
+- items() に対してソートする
+- item は (key, value) タプル
+
+```
+    # 慣れないのでメモ
+    # - 辞書のソートは items() ベースじゃないとできない
+    # - items() は「(key, value) の tuple」から成るリスト
+    #
+    # item を print してみるとこうなってる
+    #   ('今日のタスク(実行中)', {'count': 1})
+    #   ('--- 明日以降のタスク hold:1', {'count': 1})
+    #   ('明日のタスク', {'count': 3})
+    ranking_asc_sorted_items = sorted(
+        ranking_dict.items(),
+        key=lambda item:item[1]['count']
+    )
+    ranking_desc_sorted_items = reversed(ranking_asc_sorted_items)
+
+    for item in ranking_desc_sorted_items:
+        taskname, count = item[0], item[1]['count']
+        print('- {}: {}'.format(count, taskname))
 ```
 
 ## sort は破壊的, sorted は複製
