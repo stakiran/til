@@ -1,5 +1,55 @@
 # MkDocs
 
+## サンプル3
+- 最近使っている
+
+```yaml
+site_name: ほげほげドキュメント
+site_dir: output_html
+use_directory_urls: false
+theme:
+    name: 'material'
+    language: 'ja'
+    palette:
+        primary: "indigo"
+        accent: "orange"
+    features:
+        tabs: true
+extra:
+    search:
+        language: 'ja'
+markdown_extensions:
+    # 絵文字
+    - pymdownx.emoji:
+        emoji_index: !!python/name:materialx.emoji.twemoji
+        emoji_generator: !!python/name:materialx.emoji.to_svg
+    # 打ち消し線
+    - pymdownx.tilde:
+    # シンタックスハイライト
+    - pymdownx.highlight:
+    - pymdownx.superfences:
+    # raw urlの自動リンク
+    - pymdownx.magiclink:
+    # 右ペインのTOC
+    - toc:
+        permalink: true
+        separator: '_'
+        toc_depth: 3
+nav:
+    - 'index.md'
+    - 'introduction.md'
+    - ...
+```
+
+requirements:
+
+```txt
+mkdocs==1.1.2
+mkdocs-material==7.1.0
+mkdocs-material-extensions==1.0.1
+pymdown-extensions==8.1.1
+```
+
 ## サンプル2
 - 絵文字やタスクリストは pymdown を使う
   - materialテーマにはすでに入っている
