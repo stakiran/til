@@ -1,5 +1,18 @@
 # MkDocs
 
+## toc
+
+```
+theme:
+    name: 'material'
+    language: 'ja'
+    features:
+        # Enable the link to the top
+        - navigation.top
+        # 本文TOCが長くても見切れないようにする唯一の手段
+        - toc.integrate
+```
+
 ## サンプル3
 - 最近使っている
 

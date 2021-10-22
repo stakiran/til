@@ -31,6 +31,8 @@ docker build -t app1-front:v1.2.3 -f docker/app1/Dockerfile .
 docker run -d localhost/testnginx
 docker run -d -p 10123:80 -p 10124:443 localhost/testnginx
 
+docker run -t -i localhost/testnginx /bin/bash
+
 docker ps
 
 docker stop XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
