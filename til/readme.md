@@ -3,6 +3,9 @@ Today I Learned.
 
 :warning: Japanese only.
 
+## What is TIL?
+See [til.md](til.md)
+
 ## How to search
 - Filename search
     - with this page content and <kbd>Ctrl</kbd> + <kbd>F</kbd>.
