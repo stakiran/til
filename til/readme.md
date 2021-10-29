@@ -3,9 +3,6 @@ Today I Learned.
 
 :warning: Japanese only.
 
-## What is TIL?
-See [til.md](til.md)
-
 ## How to search
 - Filename search
     - with this page content and <kbd>Ctrl</kbd> + <kbd>F</kbd>.
@@ -85,7 +82,7 @@ Use `b.bat` to build this readme TOC page.
 - [cpu CPU](cpu.md) (14L)
 - [cron Cron crontab](cron.md) (163L)
 - [cron_rate cron rate AWS](cron_rate.md) (16L)
-- [css CSS](css.md) (90L)
+- [css CSS](css.md) (101L)
 - [diff diff コマンド](diff.md) (15L)
 - [display_4k_2k_full_hd 8K 4K 2K フルHDって何？違いは？](display_4k_2k_full_hd.md) (11L)
 - [dns_record_a_cname DNS レコード](dns_record_a_cname.md) (20L)
@@ -192,7 +189,7 @@ Use `b.bat` to build this readme TOC page.
 - [uuidgen UUID uuidgen](uuidgen.md) (16L)
 - [virtualapp_didlogical 資格情報の virtualapp/didlogical って何？](virtualapp_didlogical.md) (16L)
 - [virtual_kasou_keycode 仮想キーコード](virtual_kasou_keycode.md) (111L)
-- [vi_vim Vi Vim Editor](vi_vim.md) (34L)
+- [vi_vim Vi Vim Editor](vi_vim.md) (38L)
 - [vscode Visual Studio Code(VSCode)](vscode.md) (163L)
 - [vscode_drawio VSCode Draw.io](vscode_drawio.md) (11L)
 - [vscode_revealjs VSCode Reveal.js](vscode_revealjs.md) (64L)

@@ -1,6 +1,10 @@
 # Vi Vim Editor
 稀にしか使わないからいつも忘れる
 
+# 行コピペ
+- yy でコピー
+- p でペースト
+
 # 複数行インデント
 - :set shiftwidth=2
 - shift + v でライン選択

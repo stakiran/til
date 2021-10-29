@@ -1,5 +1,16 @@
 # CSS
 
+# OR と AND
+例
+.class1
+.class2
+
+AND
+  .class1.class2
+
+PR
+  .class1, .class2
+
 # table のセンタリング
 ```html
 <table class="center">
