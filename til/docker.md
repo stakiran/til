@@ -2,7 +2,8 @@
 
 ## none とは？
 - 同じイメージ名で再度生成したときの、古い側のイメージにつく名前
-- 消すには docker image prune
+- 消すには `docker image prune`
+    - ただし stopped container があると消せないので、先に `docker container prune` する
 
 ## build
 

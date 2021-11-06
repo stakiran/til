@@ -1,5 +1,14 @@
 # Python
 
+## datetimestr
+
+```py
+def today_datetimestr():
+    todaydt = datetime.datetime.today()
+    dtstr = todaydt.strftime('%Y%m%d_%H%M%S')
+    return dtstr
+```
+
 ## csv read
 
 ```py
