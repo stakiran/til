@@ -1,5 +1,16 @@
 # CSS
 
+# 直下、配下、隣接
+
+```
+a > b    aの直下のb
+a b      aの配下のb(直下より下も辿る)
+a + b    aに隣接したb
+a ~ b    aの後ろにあるb
+```
+
+from http://weboook.blog22.fc2.com/blog-entry-268.html
+
 # OR と AND
 例
 .class1
@@ -8,7 +19,7 @@
 AND
   .class1.class2
 
-PR
+OR
   .class1, .class2
 
 # table のセンタリング

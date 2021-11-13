@@ -1,6 +1,27 @@
 # aws s3
 
-## sync
+## cp(download)
+
+```
+$ aws s3 cp s3://bucket1/file1.ext ./
+```
+
+- `src dst` の形式で指定する
+    - local s3
+    - s3 s3
+    - s3 local
+- これはバケットのファイルをカレントディレクトリに持ってきている例
+
+## sync(upload files and directories)
+
+```
+$ aws s3 sync ./ s3://bucket1 --exclude "*" --include "*.txt"
+```
+
+- カレントディレクトリの `*.txt` を、s3 のバケット bucket1 にアップロード
+    - デフォは include all なので、 **まず exclude all を明示的に指定したあと**、include で指定する必要がある
+
+## sync 詳細
 
 ```
 aws s3 sync ./dist/ s3://$S3_BUCKET_NAME/ --include "*"
