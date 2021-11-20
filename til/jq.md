@@ -1,5 +1,24 @@
 # jq
 
+# az role assignment list --all の結果から name と role だけ取り出す
+
+```
+$ az role assignment list --all 
+[
+  {
+    "condition": null,
+    "description": null,
+    ……
+  },
+  ……
+]
+```
+
+```
+az role assignment list --all | jq ".[] | {name:.principalName, role: .roleDefinitionName}"
+```
+
+
 # ["hoge"] ← これから hoge を取り出す
 
 ```
