@@ -1,5 +1,7 @@
 # Terraform
 
+## data リソース参照時は data. をつけろ（でないと  Reference to undeclared resource）
+
 ## taint
 - 汚染フラグ
 - これをつけたリソースは、内部的に再作成される
