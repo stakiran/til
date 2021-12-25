@@ -1,5 +1,20 @@
 # Teraterm
 
+## ini for logging
+ログフォルダは事前に作成しておく。
+
+```
+; Viewlog Editor path
+ViewlogEditor=%localappdata%\Programs\Microsoft VS Code\Code.exe
+
+; Default Log file name. You can specify strftime format to here.
+LogDefaultName=%Y%m%d_%H%M%S_&h.log
+; Default path to save the log file.
+LogDefaultPath=C:\Users\adminuser\Desktop\work\teraterm_logs
+; Auto start logging with default log file name.
+LogAutoStart=on
+```
+
 ## Q: ポートフォーワード越しの SSH 接続が通じない
 - (フォーワード通じてアクセス新たな Teraterm 窓では)プロキシ設定外しましょう
     - 設定変えただけでは反映されないことがあるので **teraterm を立ち上げ直してやる** のが確実

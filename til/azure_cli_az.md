@@ -7,7 +7,7 @@ az ad signed-in-user show
 az role assignment list --all
 ```
 
-## storage
+## blob storage
 事前に connection string 入れておく
 
 ```
@@ -47,4 +47,24 @@ WindowsServer                 MicrosoftWindowsServer  2008-R2-SP1         Micros
 
 $ az vm image list --offer RHEL --all --output table 
 かなり時間かかる。分レベル。
+```
+
+## vm
+
+```
+$ az vm show -g rg1 -n vm1
+```
+
+## vm disk datadisk osdisk
+
+```
+az vm show -g RGNAME -n VMNAME --query "storageProfile.dataDisks"
+
+az vm show -g RGNAME -n VMNAME --query "storageProfile"
+```
+
+## regions
+
+```
+az account list-locations | jq ".[] | {displayname: .displayName, name: .name}"
 ```
