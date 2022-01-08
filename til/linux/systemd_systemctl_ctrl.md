@@ -1,6 +1,9 @@
 # systemctl
 status, start, stop と is-enabled, enable, disable。後者は起動時の自動起動。
 
+## 起動中のサービス一覧
+systemctl list-units --type=service
+
 ## 確認
 
 ```

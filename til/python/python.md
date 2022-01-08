@@ -1,5 +1,19 @@
 # Python
 
+## file markdown list glob
+
+```
+def get_markdown_filenames_only_currentlevel(fullpath_of_directory):
+    query = '{}/*.md'.format(fullpath_of_directory)
+    fullpaths = glob.glob(query, recursive=False)
+
+    filenames = []
+    for fullpath in fullpaths:
+        filename = get_filename(fullpath)
+        filenames.append(filename)
+    return filenames
+```
+
 ## datetimestr
 
 ```py

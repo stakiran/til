@@ -1,6 +1,11 @@
 # Vi Vim Editor
 稀にしか使わないからいつも忘れる
 
+# 置換
+:%s/before/after
+
+[vim 文字列置換 基本的な事 - Qiita https://qiita.com/shirochan/items/a16487d0739f455b5e8a]
+
 # 行コピペ
 - yy でコピー
 - p でペースト

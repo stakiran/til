@@ -1,6 +1,11 @@
 # tar
 
 ## 解凍
+tar xvf xxxx.tar
+
+# tar.gz
+
+## 解凍
 tar zxvf (解凍対象ファイル名.tgz)
 
 ※同名ファイル/フォルダは上書きするので注意

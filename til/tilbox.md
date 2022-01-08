@@ -1,5 +1,38 @@
 # tilbox
 
+## systemctrl
+status
+restart
+
+postgresql-11
+
+## hosts
+
+```
+/etc/hosts
+
+C:\Windows\System32\drivers\etc
+```
+
+## rpm で指定パッケージのアンインストール
+
+```
+rpm -ev `rpm -qa | grep postgres`
+```
+
+## バッチファイルで無限ループ
+
+```
+@echo off
+
+for /l %%I in (0, 0, 0) do (
+	taskkill /f /im sensendr.exe
+	timeout 60
+)
+
+exit /b
+```
+
 ## macos で GUI アプリをターミナルから開く
 - `open -a` でアプリ名を指定
 - アプリ名はアプリケーションフォルダ内のファイル名（とか Alfred から見えるやつ）
