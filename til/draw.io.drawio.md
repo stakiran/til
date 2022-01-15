@@ -3,6 +3,35 @@
 - [desktop app](https://github.com/jgraph/drawio-desktop/releases)
     - draw.io-XX.XX.XX.exe
 
+## --scale
+- 0.75 みたいに 1 基準で指定
+- PDFで出したいときだが、見切れる場合に使うと、見きれずに表示しきれる
+
+## PDF all pages
+
+```
+@echo off
+
+@echo off
+
+setlocal
+set drawio_path="C:\Program Files\draw.io\draw.io.exe"
+
+set selfdir=%~dp0
+set outpath=%selfdir%
+set ext=pdf
+set cmdline_header=%drawio_path% --export --format %ext% --all-pages
+rem set opt_scale=--scale 0.75
+set opt_scale=
+
+rem Not need between outpath and *.drawui
+rem because selfdir already contains the suffix /.
+for %%f in (%outpath%*.drawio) do (
+	echo Converting %%f...
+	%cmdline_header% %opt_scale% --output %%f.%ext% %%f
+)
+```
+
 ## コマンドラインで画像出力
 convert.bat
 
