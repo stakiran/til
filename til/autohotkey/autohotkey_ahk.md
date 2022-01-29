@@ -36,6 +36,55 @@ counter := new Counter()
 counter.plus()
 ```
 
+# gui add 内部でホットキー
+
+```
+keyExit := "Esc"
+Hotkey, %KeyExit%, press_esc
+Gui, Add, Hotkey, vDummy, %KeyExit%
+
+return
+
+press_esc:
+close:
+ExitApp
+```
+
+# gui add text で折り返し(wrap)
+150pixelの場合
+
+```
++Wrap w150
+```
+
+see [Where do I put "Wrap" to wrap text in a GUI Text - Ask for Help - AutoHotkey Community https://www.autohotkey.com/board/topic/31966-where-do-i-put-wrap-to-wrap-text-in-a-gui-text/]
+
+# 改行は `n
+`\n` ではない
+
+# 式に出現する % は %% 囲みと同じ意味
+[When single percent % signs are used in the script? - Ask for Help - AutoHotkey Community https://www.autohotkey.com/board/topic/149907-when-single-percent-signs-are-used-in-the-script/]
+
+以下は全部同じ
+
+```
+MouseMove, % adjx, % outy
+MouseMove, %adjx%, %outy%
+MouseMove, adjx, outy
+```
+
+ただし一番下は MouseMove が expression を許してるから使える
+
+# UTF8 CP65001 は ahk ファイルに BOM がないと文字化けする
+gui text で文字化けした
+
+```
+FileEncoding, CP65001
+
+Gui, Add, Text,, おはよう！
+Gui, Show
+```
+
 # and or not
 and とかも使える
 

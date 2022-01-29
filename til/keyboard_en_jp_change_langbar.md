@@ -21,3 +21,15 @@ alias=langbar
 
 ## 勝手に英語キーボードになる
 言語バー出して、EN を JP に切り替えれば OK
+
+## 言語バーがなぜか出ない場合
+- Google 日本語入力の設定を開く
+- その他タブ > 規定の IME から ctrl + shift を有効にする
+- ctrl + shift 押して google に戻す
+- 有効にしたのを無効に戻す
+
+```ini
+; 以下は alauncher 時のメモ
+[googleja]
+rawbin=start "" "C:\Program Files (x86)\Google\Google Japanese Input\GoogleIMEJaTool.exe" --mode=config_dialog
+```
