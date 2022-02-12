@@ -36,6 +36,9 @@ counter := new Counter()
 counter.plus()
 ```
 
+# FileEncoding はファイル読み込み時の話
+ahk ファイルそのもののエンコーディングを規程しているわけではない。
+
 # gui add 内部でホットキー
 
 ```

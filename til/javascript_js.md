@@ -94,6 +94,36 @@ assert(f(1,100)===a4(1))
 
 [JavaScript アロー関数を説明するよ - Qiita](https://qiita.com/may88seiji/items/4a49c7c78b55d75d693b)
 
+## URL Parameter
+
+```js
+class URLParameter{
+    // @param queryString とりあえずlocation.searchを想定。
+    constructor(queryString){
+        this._dict = {}
+        this._raw = queryString;
+        if(this._raw==''){
+            return
+        }
+
+        const withoutQuestion = queryString.substring(1);
+        const parameters = withoutQuestion.split('&');
+        for(var i=0;i<parameters.length;i++){
+            const kvs = parameters[i].split('=');
+            const key = kvs[0];
+            const value = kvs[1];
+            this._dict[key] = value;
+        }
+    }
+
+    printAll(){
+        for(const [k, v] of Object.entries(this._dict)){
+            console.log(`${k}=${v}`)
+        }
+    }
+}
+```
+
 ## クラス定数
 
 ```js
