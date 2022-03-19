@@ -1,5 +1,11 @@
 # MkDocs
 
+## warningを消すのは無理そう
+issue で「実質メッセージ表示するだけの info だから無効化オプションつける気はない」「それ許すと info 全部要らないのかって話になる」みたいなこと言うてた
+
+出る warning、主には「Documentation file 'XXX.md' contains a link to '存在しないファイル.md' which is not found in the documentation files.」だけっぽいな
+from https://github.com/mkdocs/mkdocs/search?q=log.warning
+
 ## toc
 
 ```
