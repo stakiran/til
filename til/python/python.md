@@ -1,5 +1,71 @@
 # Python
 
+## windows ファイル名に使えない無効文字 invalid char をなくす 
+
+```py
+    @staticmethod
+    def remove_invalid_char_based_on_hidemaruscb(filename):
+        # from https://github.com/stakiran/hidemaru_scb/blob/master/scb_new_or_open.mac#L157
+        after = filename
+        afterchar = '_'
+        after = after.replace('\\', afterchar)
+        after = after.replace('/', afterchar)
+        after = after.replace(':', afterchar)
+        after = after.replace('*', afterchar)
+        after = after.replace('?', afterchar)
+        after = after.replace('\"', afterchar)
+        after = after.replace('>', afterchar)
+        after = after.replace('<', afterchar)
+        after = after.replace('|', afterchar)
+        after = after.replace(' ', afterchar)
+        return after
+```
+
+## 正規表現 日付時刻やリンク文字列 マッチ
+- findall で n 回分のマッチを全部拾える
+- マッチするとキャプチャごとに分かれてタプルで格納される
+
+```py
+RE_LINK_ANOTHER_PAGE = re.compile(r'\[([^\-\*/])(.+?)\]([^\(]|$)')
+def get_linked_filename(line):
+    # '[動揺日記]'
+    #   |
+    #   V
+    # [('動', '揺日記', '')]
+    #
+    # キャプチャの都合上、こんな風に \1 \2 \3 でマッチする
+    NO_FILENAME = ''
+
+    matched_all = re.findall(RE_LINK_ANOTHER_PAGE, line)
+    is_empty = len(matched_all)==0
+    if is_empty:
+        return NO_FILENAME
+
+    # findall なので [...] が n 個あっても検出できるが
+    # まだテストしてない＆想定もしてないので、1 個だけ書いてあるとみなす
+    matched = matched_all[0]
+
+    filename = f'{matched[0]}{matched[1]}.scb'
+    filename = Util.remove_invalid_char_based_on_hidemaruscb(filename)
+    return filename
+
+RE_DATE_STRING = re.compile(r'(20[0-9]{2})\/([0-9]{2})\/([0-9]{2})')
+def get_datetime_strings(line):
+    NOT_MATCHED = ''
+
+    matched_all = re.findall(RE_DATE_STRING, line)
+    is_empty = len(matched_all)==0
+    if is_empty:
+        return NOT_MATCHED
+
+    datestrs = []
+    for matched in matched_all:
+        datestr = f'{matched[0]}/{matched[1]}/{matched[2]}'
+        datestrs.append(datestr)
+
+    return datestrs
+```
+
 ## file markdown list glob
 
 ```
