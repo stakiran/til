@@ -1,5 +1,15 @@
 # Python
 
+## 関連付けで開く
+
+```py
+def open_file_with_assoc(filepath):
+    # - ブロッキングを防ぐために start 経由で開く
+    # - 関連付けはファイルパスを指定するだけで開けるので
+    #   プログラム名は指定しない
+    os.system('start "" "{}"'.format(filepath))
+```
+
 ## windows ファイル名に使えない無効文字 invalid char をなくす 
 
 ```py

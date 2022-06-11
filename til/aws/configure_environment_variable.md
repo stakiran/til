@@ -1,5 +1,8 @@
 # AWS CLI aws configure と環境変数
 
+## プロファイルの切り替えは AWS_PROFILE 環境変数
+あるいは aws コマンドで都度 `--profile xxx` 指定するか
+
 ## aws configure に profile をつくる
 セクションの書き方が違う
 
