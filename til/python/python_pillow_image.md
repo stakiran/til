@@ -1,6 +1,39 @@
 # Python Pillow
+- save はフォーマット未指定ならファイル名拡張子から判断
+- 対応フォーマットは `python -m PIL` で見れる
 
-## 指定画像ファイルのりサイズ
+## クリップボードのイメージを保存
+
+```python
+# encoding: utf-8
+
+import datetime
+import os
+import sys
+
+from PIL import ImageGrab, Image
+
+def today_datetimestr():
+    todaydt = datetime.datetime.today()
+    dtstr = todaydt.strftime('%Y%m%d_%H%M%S')
+    return dtstr
+
+MYFULLPATH = os.path.abspath(sys.argv[0])
+MYDIR = os.path.dirname(MYFULLPATH)
+
+clipboard = ImageGrab.grabclipboard()
+is_not_image = not isinstance(clipboard, Image.Image)
+if is_not_image:
+    print('Not image.')
+    sys.exit(1)
+
+outname = '{}.png'.format(today_datetimestr())
+outfull = os.path.join(MYDIR, outname)
+clipboard.save(outfull)
+print('Image {} saved.'.format(outname))
+```
+
+## 指定画像ファイルのリサイズ
 
 ```python
 from PIL import Image

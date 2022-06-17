@@ -200,6 +200,22 @@ def list2csv(filepath, ls):
             writer.writerow(element)
 ```
 
+## パスワードポリシー突破
+必要な文字をランダムに1文字ずつつくる
+
+```py
+import secrets
+import string
+
+def generate_alnumark():
+    alphabet = secrets.choice(string.ascii_letters)
+    number = secrets.choice(string.digits)
+    mark = secrets.choice(string.punctuation)
+
+    s = '{}{}{}'.format(alphabet, number, mark)
+    return s
+```
+
 ## パスワードをつくるセキュリティ用乱数モジュール
 - secrets モジュールを使う
 - random はセキュリティゆるいので使わない
