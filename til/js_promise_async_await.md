@@ -34,7 +34,7 @@ const promise = fetchURL(URL)
 - Promise にはコールバック関数を渡す
     - このコールバック関数には (resolve, reject) という引数が渡されてくる
     - resolve オブジェクト「処理成功時には俺に値渡せや」
-    - reject オブジェクト「処理失敗字は俺に値渡せや」
+    - reject オブジェクト「処理失敗時は俺に値渡せや」
 - new Promise(callback) しても、即座に関数 callback の処理結果が返されるわけではない
     - でも関数 callback はバックグラウンドで（非同期で）実行が走っている
 
