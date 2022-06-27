@@ -123,7 +123,7 @@ Use `b.bat` to build this readme TOC page.
 - [iphone_reminder iPhone リマインダー](iphone_reminder.md) (34L)
 - [javascript_js Javascript](javascript_js.md) (496L)
 - [ja_jp_en_us_lang_region_code ja-jp とか en-us とかそういうやつ locale ロケール](ja_jp_en_us_lang_region_code.md) (15L)
-- [jq jq](jq.md) (86L)
+- [jq jq](jq.md) (97L)
 - [jquery jQuery](jquery.md) (389L)
 - [jszip JsZip](jszip.md) (86L)
 - [js_promise_async_await Javascript 非同期処理](js_promise_async_await.md) (246L)

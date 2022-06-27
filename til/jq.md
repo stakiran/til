@@ -1,5 +1,16 @@
 # jq
 
+# aws iam list-users の結果から name と date だけ取り出す
+
+```
+$ aws iam list-users | jq ".Users[] | {name:.UserName, created_at:.CreateDate}"
+{
+  "name": "user1",
+  "created_at": "2022-06-27T11:22:33Z"
+}
+...
+```
+
 # az role assignment list --all の結果から name と role だけ取り出す
 
 ```
