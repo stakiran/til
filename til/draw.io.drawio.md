@@ -2,6 +2,7 @@
 - [web](https://www.draw.io/)
 - [desktop app](https://github.com/jgraph/drawio-desktop/releases)
     - draw.io-XX.XX.XX.exe
+    - **コマンドラインは installer 版じゃないと使えないので注意**
 
 ## --scale
 - 0.75 みたいに 1 基準で指定
