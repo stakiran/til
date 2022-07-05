@@ -1,5 +1,8 @@
 # Terraform
 
+## releases zip
+https://releases.hashicorp.com/terraform/
+
 ## data リソース参照時は data. をつけろ（でないと  Reference to undeclared resource）
 
 ## taint

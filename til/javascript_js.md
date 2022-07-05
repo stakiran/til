@@ -226,6 +226,9 @@ named export
 - [export - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/export)
 - [import - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/import)
 
+## import * はどういう効果？
+named export を全部 import できる。
+
 ### 問題1: export したオブジェクトを import したら undefined になってる件
 options.js
 
