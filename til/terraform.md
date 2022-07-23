@@ -1,5 +1,12 @@
 # Terraform
 
+## terraform module と変更
+- `module "ここモジュール名を変えた場合" {`
+    - terraform init による再登録が必要
+    - リソースも再作成が必要
+
+そもそもリソース名が `module.(モジュール名).xxx.yyy` となっているので、モジュール名が変わるだけで全部つくりなおしになる。
+
 ## releases zip
 https://releases.hashicorp.com/terraform/
 
@@ -186,6 +193,8 @@ $ terraform graph | dot -Tsvg > graph.svg
 - count meta-argument を使う
     - count=0 のときはリソースが作成されない
 - 条件分岐は三項演算子で書ける
+- count つきのリソースを使う側では index 指定が必要
+    - 例 `arn = aws_codepipeline.main[count.index].arn`
 
 ```tf
 resource "type" "name" {
